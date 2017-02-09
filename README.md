@@ -1,9 +1,7 @@
 # react-triple-select-box
 A very simple triple-select-box react component.
 
-
 ## How To use
-
 
 ### Import
 	import TripleSelectBox from 'TripleSelectBox';
