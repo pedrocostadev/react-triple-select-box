@@ -1,0 +1,31 @@
+.boxStyle {
+	width: 80px;
+	padding: 4px;
+	border-width: 4px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: black;
+}
+
+.inputStyle {
+	font-size: 13px;
+	padding: 4px;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: black;
+	color: black;
+	width: 80%;
+	margin: 4px;
+	background-color: rgba(0,0,0,0);
+	display: block;
+}
+
+.labelStyle {
+	color: black;
+	display: block;
+	text-align: center;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
