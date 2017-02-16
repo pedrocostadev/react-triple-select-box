@@ -10,7 +10,8 @@ A simple, dependencies-free and dumb react component to render triple select box
 	// or
 	var Alert = require('react-triple-select-box').TripleSelectBox;
 #### ES6
-	Es6 modules aren't supported natively yet, but you can use the syntax now with the help of a transpiler like Babel.
+	Es6 modules aren't supported natively yet, but you can use the syntax now with the help of a transpiler
+	like Babel.
 
 	import Button from 'react-triple-select-box/lib/TripleSelectBox';
 	// or
