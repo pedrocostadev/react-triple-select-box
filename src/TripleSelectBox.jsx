@@ -45,6 +45,7 @@ export default class TripleSelectBox extends Component {
   }
 
   _onClickSelectToLeft() {
+    console.log('_onClickSelectToLeft_onClickSelectToLeft_onClickSelectToLeft');
     const { id, onChange } = this.props;
     const clickedCodesForSelection = this.state.nonSelectedValues;
 
@@ -94,8 +95,7 @@ export default class TripleSelectBox extends Component {
     const { id, titleLeftBox } = this.props;
     let { leftValues } = this.props;
 
-    return (
-      <div style={{ display: 'inline-block' }}>
+    return (<div style={{ display: 'inline-block' }}>
         <label
           className="labelStyle"
           style={{ ...this.props.labelStyle }}
@@ -105,7 +105,7 @@ export default class TripleSelectBox extends Component {
         <select
           id={`${id}-left-select-values-box`}
           onChange={ (ev) => {
-            leftValues = [...ev.target.options].filter(option => option.selected).map(o => o.value);
+            leftValues = Array.apply(null, ev.target.options).filter(option => option.selected).map(o => o.value);
             this.setState({ leftSelectedValues: leftValues.map((code) => parseInt(code, 10)) });
           }}
           className="boxStyle"
@@ -135,7 +135,7 @@ export default class TripleSelectBox extends Component {
         <select
           id={`${id}-right-select-values-box`}
           onChange={ (ev) => {
-            rightValues = [...ev.target.options].filter(option => option.selected).map(o => o.value);
+            rightValues = Array.apply(null, ev.target.options).filter(option => option.selected).map(o => o.value);
             this.setState({ rightSelectedValues: rightValues.map((code) => parseInt(code, 10)) });
           }}
           className="boxStyle"
@@ -165,7 +165,7 @@ export default class TripleSelectBox extends Component {
         <select
           id={`${id}-center-select-values-box`}
           onChange={ (ev) => {
-            centerValues = [...ev.target.options].filter(option => option.selected).map(o => o.value);
+            centerValues = Array.apply(null, ev.target.options).filter(option => option.selected).map(o => o.value);
             this.setState({ nonSelectedValues: centerValues.map((code) => parseInt(code, 10)) });
           }}
           className="boxStyle"
