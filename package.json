@@ -1,7 +1,7 @@
 {
   "name": "react-triple-select-box",
-  "version": "1.0.0",
-  "description": "react-triple-select-box React component",
+  "version": "0.0.2",
+  "description": "A simple, dependencies-free and dumb react component to render triple select boxes.",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -11,7 +11,7 @@
     "umd"
   ],
   "scripts": {
-    "build": "nwb build-react-component",
+    "build": "nwb build-react-component --copy-files",
     "clean": "nwb clean-module && npm clean-demo",
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
@@ -24,16 +24,26 @@
   },
   "devDependencies": {
     "css-loader": "^0.26.1",
+    "jsx-control-statements": "^3.1.5",
     "nwb": "0.15.x",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "style-loader": "^0.13.1"
   },
-  "author": "",
+  "author": {
+    "name": "Pedro Costa",
+    "email": "pedrocostadev@gmail.com"
+  },
   "homepage": "",
   "license": "MIT",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pedrocostadev/react-triple-select-box"
+  },
   "keywords": [
-    "react-component"
+    "react-component",
+    "select-box",
+    "triple-select-box",
+    "select component"
   ]
 }

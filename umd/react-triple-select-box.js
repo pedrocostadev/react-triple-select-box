@@ -1,5 +1,5 @@
 /*!
- * react-triple-select-box v1.0.0
+ * react-triple-select-box v0.0.2
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -108,7 +108,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* unused harmony export default */
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _jsxFileName = '/Users/macbook/git/react-triple-select-box/src/TripleSelectBox.jsx';
+var _jsxFileName = 'C:\\repos\\react-triple-select-box\\src\\TripleSelectBox.jsx';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 

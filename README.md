@@ -1,5 +1,5 @@
 # react-triple-select-box
-A very simple and dumb react component to render triple select boxes.
+A simple, dependencies-free and dumb react component to render triple select boxes.
 
 ## How To use
 
@@ -28,11 +28,11 @@ A very simple and dumb react component to render triple select boxes.
 	    };
 	    this._onChange = this._onChange.bind(this);
 	  }
-	
+
 	  _onChange(leftValues, centerValues, rightValues) {
 	    this.setState({ leftValues, centerValues, rightValues });
 	  }
-	
+
 	  render() {
 	    return (
 	      <div className="App">
@@ -47,7 +47,7 @@ A very simple and dumb react component to render triple select boxes.
 	          titleLeftBox="Left"
 	          titleNonselectedBox="Unselected"
 	        />
-	
+
 	      </div>
 	    );
 	  }
