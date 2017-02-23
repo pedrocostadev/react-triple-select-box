@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './TripleSelectBox.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const DEFAULT_LINES_NUM = 8;
 
@@ -95,7 +96,7 @@ export default class TripleSelectBox extends Component {
     const { id, titleLeftBox } = this.props;
     let { leftValues } = this.props;
 
-    return (<div style={{ display: 'inline-block' }}>
+    return (<div style={{ display: 'inline-block', textAlign: 'center' }}>
         <label
           className="labelStyle"
           style={{ ...this.props.labelStyle }}
@@ -108,7 +109,7 @@ export default class TripleSelectBox extends Component {
             leftValues = Array.apply(null, ev.target.options).filter(option => option.selected).map(o => o.value);
             this.setState({ leftSelectedValues: leftValues.map((code) => parseInt(code, 10)) });
           }}
-          className="boxStyle"
+          className="boxStyle bg-info"
           style={{ ...this.props.boxStyle }}
           size={this.props.numberOfLines || DEFAULT_LINES_NUM}
           multiple
@@ -125,7 +126,7 @@ export default class TripleSelectBox extends Component {
     let { rightValues } = this.props;
 
     return (
-      <div style={{ display: 'inline-block' }}>
+      <div style={{ display: 'inline-block', textAlign: 'center' }}>
         <label
           className="labelStyle"
           style={{ ...this.props.labelStyle }}
@@ -138,7 +139,7 @@ export default class TripleSelectBox extends Component {
             rightValues = Array.apply(null, ev.target.options).filter(option => option.selected).map(o => o.value);
             this.setState({ rightSelectedValues: rightValues.map((code) => parseInt(code, 10)) });
           }}
-          className="boxStyle"
+          className="boxStyle bg-info"
           style={{ ...this.props.boxStyle }}
           size={this.props.numberOfLines || DEFAULT_LINES_NUM}
           multiple
@@ -155,7 +156,7 @@ export default class TripleSelectBox extends Component {
     let { centerValues } = this.props;
 
     return (
-      <div style={{ display: 'inline-block' }}>
+      <div style={{ display: 'inline-block', textAlign: 'center' }}>
         <label
           className="labelStyle"
           style={{ ...this.props.labelStyle }}
@@ -168,7 +169,7 @@ export default class TripleSelectBox extends Component {
             centerValues = Array.apply(null, ev.target.options).filter(option => option.selected).map(o => o.value);
             this.setState({ nonSelectedValues: centerValues.map((code) => parseInt(code, 10)) });
           }}
-          className="boxStyle"
+          className="boxStyle bg-info"
           style={{ ...this.props.boxStyle }}
           size={this.props.numberOfLines || DEFAULT_LINES_NUM}
           multiple
@@ -186,7 +187,7 @@ export default class TripleSelectBox extends Component {
         <input
           id="btnRight"
           type="button"
-          className="inputStyle"
+          className="inputStyle btn-primary"
           value="&gt;&gt;"
           onClick={ this._onClickUnSelectFromLeft }
           disabled={ !this.state.leftSelectedValues.length }
@@ -194,7 +195,7 @@ export default class TripleSelectBox extends Component {
         <input
           id="btnLeft"
           type="button"
-          className="inputStyle"
+          className="inputStyle btn-primary"
           value="&lt;&lt;"
           onClick={ this._onClickSelectToLeft }
           disabled={ !this.state.nonSelectedValues.length }
@@ -209,7 +210,7 @@ export default class TripleSelectBox extends Component {
         <input
           id="btnRight"
           type="button"
-          className="inputStyle"
+          className="inputStyle btn-primary"
           style={{ ...this.props.inputStyle }}
           value="&gt;&gt;"
           onClick={ this._onClickSelectToRight }
@@ -218,7 +219,7 @@ export default class TripleSelectBox extends Component {
         <input
           id="btnLeft"
           type="button"
-          className="inputStyle"
+          className="inputStyle btn-primary"
           style={{ ...this.props.inputStyle }}
           value="&lt;&lt;"
           onClick={ this._onClickUnSelectFromRight }
@@ -231,7 +232,7 @@ export default class TripleSelectBox extends Component {
   render() {
     const { id } = this.props;
     return (
-      <div id={id} style={{ display: 'inline-block' }}>
+      <div id={id} style={{ display: 'inline-block', padding: '10px', margin: 'auto' }}>
         {this._renderLeftPanel()}
         {this._renderLeftButtons()}
         {this._renderCenterPanel()}

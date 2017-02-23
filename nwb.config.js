@@ -5,22 +5,18 @@ module.exports = {
     umd: {
       global: 'ReactTripleSelectBox',
       externals: {
-        react: 'React'
+        react: 'React',
       }
     }
   },
   babel: {
-   plugins: ['jsx-control-statements']
+   plugins: ['jsx-control-statements' ]
   },
   webpack: {
      rules: {
        babel: {
          test: /\.jsx?/
        },
-			 'style-loader': {
-				 loader: 'css-loader',
-				  options: { root: '.' }
-			 }
      },
    }
 }

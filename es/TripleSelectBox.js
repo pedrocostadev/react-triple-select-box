@@ -8,6 +8,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 import React, { Component } from 'react';
 import './TripleSelectBox.css';
+import 'jquery/dist/jquery.js';
+
+var $ = require('jquery');
+window.jQuery = $;
+//window.$ = $;
+import 'jquery/dist/jquery.js';
+global.jQuery = require('jquery');
+
+import 'jquery/dist/jquery.js';
+import 'jquery';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 var DEFAULT_LINES_NUM = 8;
 
@@ -316,7 +329,7 @@ var TripleSelectBox = function (_Component) {
       React.createElement('input', {
         id: 'btnRight',
         type: 'button',
-        className: 'inputStyle',
+        className: 'inputStyle btn btn-sq-sm btn-primary',
         style: _extends({}, this.props.inputStyle),
         value: '>>',
         onClick: this._onClickSelectToRight,
@@ -325,7 +338,7 @@ var TripleSelectBox = function (_Component) {
       React.createElement('input', {
         id: 'btnLeft',
         type: 'button',
-        className: 'inputStyle',
+        className: 'inputStyle btn btn-sq-xs btn-primary',
         style: _extends({}, this.props.inputStyle),
         value: '<<',
         onClick: this._onClickUnSelectFromRight,
