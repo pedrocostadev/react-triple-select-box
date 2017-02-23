@@ -1,6 +1,8 @@
 # react-triple-select-box
 A simple, dependencies-free and dumb react component to render triple select boxes.
 
+![Screenshot](./img/demo.png)
+
 ## How To use
 
 ### Import
