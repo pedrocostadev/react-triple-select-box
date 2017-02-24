@@ -8,19 +8,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 import React, { Component } from 'react';
 import './TripleSelectBox.css';
-import 'jquery/dist/jquery.js';
-
-var $ = require('jquery');
-window.jQuery = $;
-//window.$ = $;
-import 'jquery/dist/jquery.js';
-global.jQuery = require('jquery');
-
-import 'jquery/dist/jquery.js';
-import 'jquery';
-
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.js';
 
 var DEFAULT_LINES_NUM = 8;
 
@@ -43,6 +30,32 @@ var TripleSelectBox = function (_Component) {
     _this._onClickSelectToLeft = _this._onClickSelectToLeft.bind(_this);
     return _this;
   }
+
+  TripleSelectBox.prototype._excludeValues = function _excludeValues() {
+    var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var valuesToExclude = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+    var compareFn = this.props.compareFn;
+
+    if (compareFn instanceof Function) {
+      return values.filter(function (value) {
+        return !valuesToExclude.some(function (valueToExclude) {
+          return compareFn(valueToExclude, value);
+        });
+      });
+    }
+    return values.filter(function (value) {
+      return !valuesToExclude.some(function (exclude) {
+        return exclude == value;
+      });
+    });
+  };
+
+  TripleSelectBox.prototype._addValues = function _addValues() {
+    var arrayToAdd = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var valuesToAdd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    return arrayToAdd.concat(valuesToAdd);
+  };
 
   TripleSelectBox.prototype._unSelectNode = function _unSelectNode(id) {
     var selectBoxChilds = document.getElementById(id).childNodes;
@@ -67,10 +80,8 @@ var TripleSelectBox = function (_Component) {
     var leftValues = this.props.leftValues;
 
 
-    centerValues = centerValues.filter(function (value) {
-      return clickedCodesForSelection.indexOf(value) === -1;
-    });
-    rightValues = rightValues.concat(clickedCodesForSelection);
+    centerValues = this._excludeValues(centerValues, clickedCodesForSelection);
+    rightValues = this._addValues(rightValues, clickedCodesForSelection);
 
     onChange(leftValues, centerValues, rightValues);
 
@@ -79,7 +90,6 @@ var TripleSelectBox = function (_Component) {
   };
 
   TripleSelectBox.prototype._onClickSelectToLeft = function _onClickSelectToLeft() {
-    console.log('_onClickSelectToLeft_onClickSelectToLeft_onClickSelectToLeft');
     var _props3 = this.props,
         id = _props3.id,
         onChange = _props3.onChange;
@@ -92,10 +102,8 @@ var TripleSelectBox = function (_Component) {
     var rightValues = this.props.rightValues;
 
 
-    centerValues = centerValues.filter(function (value) {
-      return clickedCodesForSelection.indexOf(value) === -1;
-    });
-    leftValues = leftValues.concat(clickedCodesForSelection);
+    centerValues = this._excludeValues(centerValues, clickedCodesForSelection);
+    leftValues = this._addValues(leftValues, clickedCodesForSelection);
 
     onChange(leftValues, centerValues, rightValues);
 
@@ -115,10 +123,8 @@ var TripleSelectBox = function (_Component) {
         centerValues = _props6.centerValues;
 
 
-    leftValues = leftValues.filter(function (value) {
-      return clickedCodesForUnSelection.indexOf(parseInt(value, 10)) === -1;
-    });
-    centerValues = centerValues.concat(clickedCodesForUnSelection);
+    leftValues = this._excludeValues(leftValues, clickedCodesForUnSelection);
+    centerValues = this._addValues(centerValues, clickedCodesForUnSelection);
 
     onChange(leftValues, centerValues, rightValues);
 
@@ -138,10 +144,8 @@ var TripleSelectBox = function (_Component) {
         centerValues = _props8.centerValues;
 
 
-    rightValues = rightValues.filter(function (value) {
-      return clickedCodesForUnSelection.indexOf(parseInt(value, 10)) === -1;
-    });
-    centerValues = centerValues.concat(clickedCodesForUnSelection);
+    rightValues = this._excludeValues(rightValues, clickedCodesForUnSelection);
+    centerValues = this._addValues(centerValues, clickedCodesForUnSelection);
 
     onChange(leftValues, centerValues, rightValues);
 
@@ -160,11 +164,11 @@ var TripleSelectBox = function (_Component) {
 
     return React.createElement(
       'div',
-      { style: { display: 'inline-block' } },
+      { style: { display: 'inline-block', textAlign: 'center' } },
       React.createElement(
         'label',
         {
-          className: 'labelStyle',
+          className: 'label-style',
           style: _extends({}, this.props.labelStyle)
         },
         titleLeftBox
@@ -179,19 +183,17 @@ var TripleSelectBox = function (_Component) {
             }).map(function (o) {
               return o.value;
             });
-            _this2.setState({ leftSelectedValues: leftValues.map(function (code) {
-                return parseInt(code, 10);
-              }) });
+            _this2.setState({ leftSelectedValues: leftValues });
           },
-          className: 'boxStyle',
+          className: 'box-style',
           style: _extends({}, this.props.boxStyle),
           size: this.props.numberOfLines || DEFAULT_LINES_NUM,
           multiple: true
         },
-        leftValues.map(function (value, i) {
+        leftValues.map(function (value) {
           return React.createElement(
             'option',
-            { key: i, style: { fontSize: '14px', fontWeight: 600 }, value: value },
+            { key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value },
             value
           );
         })
@@ -210,11 +212,11 @@ var TripleSelectBox = function (_Component) {
 
     return React.createElement(
       'div',
-      { style: { display: 'inline-block' } },
+      { style: { display: 'inline-block', textAlign: 'center' } },
       React.createElement(
         'label',
         {
-          className: 'labelStyle',
+          className: 'label-style',
           style: _extends({}, this.props.labelStyle)
         },
         titleRightBox
@@ -229,19 +231,17 @@ var TripleSelectBox = function (_Component) {
             }).map(function (o) {
               return o.value;
             });
-            _this3.setState({ rightSelectedValues: rightValues.map(function (code) {
-                return parseInt(code, 10);
-              }) });
+            _this3.setState({ rightSelectedValues: rightValues });
           },
-          className: 'boxStyle',
+          className: 'box-style',
           style: _extends({}, this.props.boxStyle),
           size: this.props.numberOfLines || DEFAULT_LINES_NUM,
           multiple: true
         },
-        rightValues.map(function (value, i) {
+        rightValues.map(function (value) {
           return React.createElement(
             'option',
-            { key: i, style: { fontSize: '14px', fontWeight: 600 }, value: value },
+            { key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value },
             value
           );
         })
@@ -260,11 +260,11 @@ var TripleSelectBox = function (_Component) {
 
     return React.createElement(
       'div',
-      { style: { display: 'inline-block' } },
+      { style: { display: 'inline-block', textAlign: 'center' } },
       React.createElement(
         'label',
         {
-          className: 'labelStyle',
+          className: 'label-style',
           style: _extends({}, this.props.labelStyle)
         },
         titleNonselectedBox
@@ -279,19 +279,17 @@ var TripleSelectBox = function (_Component) {
             }).map(function (o) {
               return o.value;
             });
-            _this4.setState({ nonSelectedValues: centerValues.map(function (code) {
-                return parseInt(code, 10);
-              }) });
+            _this4.setState({ nonSelectedValues: centerValues });
           },
-          className: 'boxStyle',
+          className: 'box-style',
           style: _extends({}, this.props.boxStyle),
           size: this.props.numberOfLines || DEFAULT_LINES_NUM,
           multiple: true
         },
-        centerValues.map(function (value, i) {
+        centerValues.map(function (value) {
           return React.createElement(
             'option',
-            { key: i, style: { fontSize: '14px', fontWeight: 600 }, value: value },
+            { key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value },
             value
           );
         })
@@ -306,7 +304,7 @@ var TripleSelectBox = function (_Component) {
       React.createElement('input', {
         id: 'btnRight',
         type: 'button',
-        className: 'inputStyle',
+        className: 'input-style btn-arrows',
         value: '>>',
         onClick: this._onClickUnSelectFromLeft,
         disabled: !this.state.leftSelectedValues.length
@@ -314,7 +312,7 @@ var TripleSelectBox = function (_Component) {
       React.createElement('input', {
         id: 'btnLeft',
         type: 'button',
-        className: 'inputStyle',
+        className: 'input-style btn-arrows',
         value: '<<',
         onClick: this._onClickSelectToLeft,
         disabled: !this.state.nonSelectedValues.length
@@ -329,7 +327,7 @@ var TripleSelectBox = function (_Component) {
       React.createElement('input', {
         id: 'btnRight',
         type: 'button',
-        className: 'inputStyle btn btn-sq-sm btn-primary',
+        className: 'input-style btn-arrows',
         style: _extends({}, this.props.inputStyle),
         value: '>>',
         onClick: this._onClickSelectToRight,
@@ -338,7 +336,7 @@ var TripleSelectBox = function (_Component) {
       React.createElement('input', {
         id: 'btnLeft',
         type: 'button',
-        className: 'inputStyle btn btn-sq-xs btn-primary',
+        className: 'input-style btn-arrows',
         style: _extends({}, this.props.inputStyle),
         value: '<<',
         onClick: this._onClickUnSelectFromRight,
@@ -352,7 +350,7 @@ var TripleSelectBox = function (_Component) {
 
     return React.createElement(
       'div',
-      { id: id, style: { display: 'inline-block' } },
+      { id: id, style: { display: 'inline-block', padding: '10px', margin: 'auto' } },
       this._renderLeftPanel(),
       this._renderLeftButtons(),
       this._renderCenterPanel(),
@@ -379,5 +377,6 @@ process.env.NODE_ENV !== "production" ? TripleSelectBox.propTypes = {
   titleRightBox: React.PropTypes.string.isRequired,
   titleLeftBox: React.PropTypes.string.isRequired,
   titleNonselectedBox: React.PropTypes.string.isRequired,
+  compareFn: React.PropTypes.func,
   onChange: React.PropTypes.func.isRequired
 } : void 0;

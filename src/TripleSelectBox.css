@@ -1,13 +1,22 @@
-.boxStyle {
+.box-style {
 	width: 70px;
 	padding: 4px;
 	border-width: 4px;
 	border-style: solid;
 	border-radius: 5px;
 	border-color: #337ab7;
+	background-color: #d9edf7;
+	outline: none;
+	min-height: 142px;
 }
 
-.inputStyle {
+.select-box-option:hover {
+	background-color: #286090;
+	border-radius: 3px;
+	color: white;
+}
+
+.input-style {
 	font-size: 13px;
 	padding: 4px;
 	border-width: 2px;
@@ -17,15 +26,26 @@
 	color: black;
 	width: 80%;
 	margin: 4px;
-	/*background-color: rgba(0,0,0,0);*/
 	display: block;
 }
 
-.labelStyle {
+.label-style {
 	color: black;
 	display: block;
 	text-align: center;
 	font-size: 13px;
 	text-transform: uppercase;
 	font-weight: bold;
+}
+
+.btn-arrows {
+	color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.btn-arrows:hover {
+	color: #fff;
+	background-color: #286090;
+	border-color: #204d74;
 }
