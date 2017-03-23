@@ -15,7 +15,7 @@ A simple, dependencies-free and dumb react component to render triple select box
 	Es6 modules aren't supported natively yet, but you can use the syntax now with the help of a transpiler
 	like Babel.
 
-	import Button from 'react-triple-select-box/lib/TripleSelectBox';
+	import TripleSelectBox from 'react-triple-select-box/lib/TripleSelectBox';
 	// or
 	import { TripleSelectBox } from 'react-triple-select-box';
 	
