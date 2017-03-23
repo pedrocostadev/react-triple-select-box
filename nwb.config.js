@@ -10,7 +10,8 @@ module.exports = {
     }
   },
   babel: {
-   plugins: ['jsx-control-statements' ]
+   plugins: ['jsx-control-statements' ],
+   cherryPick: 'TripleSelectBox'
   },
   webpack: {
      rules: {

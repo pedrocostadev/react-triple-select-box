@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import TripleSelectBox from '../../src/TripleSelectBox.jsx';
+// import TripleSelectBox from '../../src/TripleSelectBox.jsx';
+import TripleSelectBox from '../../es/TripleSelectBox';
 
 let Demo = React.createClass({
 
