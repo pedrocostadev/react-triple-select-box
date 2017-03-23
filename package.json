@@ -1,6 +1,6 @@
 {
   "name": "react-triple-select-box",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A simple, dependencies-free and dumb react component to render triple select boxes.",
   "main": "lib/index.js",
   "module": "es/index.js",

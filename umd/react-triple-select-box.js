@@ -1,5 +1,5 @@
 /*!
- * react-triple-select-box v0.2.0
+ * react-triple-select-box v0.3.2
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {

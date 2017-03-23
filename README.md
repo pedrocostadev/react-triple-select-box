@@ -19,4 +19,4 @@ A simple, dependencies-free and dumb react component to render triple select box
 	// or
 	import { TripleSelectBox } from 'react-triple-select-box';
 	
-###See the [Examples](docs/examples.md) and the list of [Props](docs/props.md) for more details.###
+###See the [Examples](docs/examples.md) and the list of [Props](docs/props.md) for more details.
