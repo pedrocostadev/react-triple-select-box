@@ -1,6 +1,6 @@
 {
   "name": "react-triple-select-box",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "A simple, dependencies-free and dumb react component to render triple select boxes.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,6 +23,7 @@
     "babel-preset-react": "^6.24.1"
   },
   "peerDependencies": {
+    "prop-types": "^15.6.2",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
   },
@@ -33,6 +34,7 @@
     "nwb": "^0.15.9",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
+    "prop-types": "^15.6.2",
     "style-loader": "^0.13.2"
   },
   "author": {

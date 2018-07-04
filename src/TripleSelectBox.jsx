@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './TripleSelectBox.css';
 
 const DEFAULT_LINES_NUM = 8;
@@ -255,17 +256,17 @@ export default class TripleSelectBox extends Component {
 }
 
 TripleSelectBox.propTypes = {
-	id: React.PropTypes.string.isRequired,
-	numberOfLines: React.PropTypes.number,
-	boxStyle: React.PropTypes.object,
-	labelStyle: React.PropTypes.object,
-	inputStyle: React.PropTypes.object,
-	rightValues: React.PropTypes.array.isRequired,
-	leftValues: React.PropTypes.array.isRequired,
-	centerValues: React.PropTypes.array.isRequired,
-	titleRightBox: React.PropTypes.string.isRequired,
-	titleLeftBox:	React.PropTypes.string.isRequired,
-	titleNonselectedBox: React.PropTypes.string.isRequired,
-	compareFn: React.PropTypes.func,
-	onChange: React.PropTypes.func.isRequired,
+	id: PropTypes.string.isRequired,
+	numberOfLines: PropTypes.number,
+	boxStyle: PropTypes.object,
+	labelStyle: PropTypes.object,
+	inputStyle: PropTypes.object,
+	rightValues: PropTypes.array.isRequired,
+	leftValues: PropTypes.array.isRequired,
+	centerValues: PropTypes.array.isRequired,
+	titleRightBox: PropTypes.string.isRequired,
+	titleLeftBox:	PropTypes.string.isRequired,
+	titleNonselectedBox: PropTypes.string.isRequired,
+	compareFn: PropTypes.func,
+	onChange: PropTypes.func.isRequired,
 };

@@ -7,7 +7,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './TripleSelectBox.css';
+
+import Test from './Untitled-1';
 
 var DEFAULT_LINES_NUM = 8;
 
@@ -351,6 +354,7 @@ var TripleSelectBox = function (_Component) {
 		return React.createElement(
 			'div',
 			{ id: id, style: { display: 'inline-block', padding: '10px', margin: 'auto' } },
+			React.createElement(Test, { test: '1' }),
 			this._renderLeftPanel(),
 			this._renderLeftButtons(),
 			this._renderCenterPanel(),
@@ -366,17 +370,17 @@ export { TripleSelectBox as default };
 
 
 process.env.NODE_ENV !== "production" ? TripleSelectBox.propTypes = {
-	id: React.PropTypes.string.isRequired,
-	numberOfLines: React.PropTypes.number,
-	boxStyle: React.PropTypes.object,
-	labelStyle: React.PropTypes.object,
-	inputStyle: React.PropTypes.object,
-	rightValues: React.PropTypes.array.isRequired,
-	leftValues: React.PropTypes.array.isRequired,
-	centerValues: React.PropTypes.array.isRequired,
-	titleRightBox: React.PropTypes.string.isRequired,
-	titleLeftBox: React.PropTypes.string.isRequired,
-	titleNonselectedBox: React.PropTypes.string.isRequired,
-	compareFn: React.PropTypes.func,
-	onChange: React.PropTypes.func.isRequired
+	id: PropTypes.string.isRequired,
+	numberOfLines: PropTypes.number,
+	boxStyle: PropTypes.object,
+	labelStyle: PropTypes.object,
+	inputStyle: PropTypes.object,
+	rightValues: PropTypes.array.isRequired,
+	leftValues: PropTypes.array.isRequired,
+	centerValues: PropTypes.array.isRequired,
+	titleRightBox: PropTypes.string.isRequired,
+	titleLeftBox: PropTypes.string.isRequired,
+	titleNonselectedBox: PropTypes.string.isRequired,
+	compareFn: PropTypes.func,
+	onChange: PropTypes.func.isRequired
 } : void 0;
