@@ -1,5 +1,5 @@
 /*!
- * react-triple-select-box v0.3.3
+ * react-triple-select-box v0.3.7
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -15,41 +15,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -60,7 +60,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -69,13 +69,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
@@ -86,24 +86,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TripleSelectBox_jsx__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TripleSelectBox_jsx__ = __webpack_require__(1);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "TripleSelectBox", function() { return __WEBPACK_IMPORTED_MODULE_0__TripleSelectBox_jsx__["TripleSelectBox"]; });
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TripleSelectBox_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TripleSelectBox_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TripleSelectBox_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__TripleSelectBox_css__);
 /* unused harmony export default */
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -122,469 +116,475 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DEFAULT_LINES_NUM = 8;
 
 var TripleSelectBox = function (_Component) {
-  _inherits(TripleSelectBox, _Component);
+	_inherits(TripleSelectBox, _Component);
 
-  function TripleSelectBox(props) {
-    _classCallCheck(this, TripleSelectBox);
+	function TripleSelectBox(props) {
+		_classCallCheck(this, TripleSelectBox);
 
-    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+		var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
-    _this.state = {
-      rightSelectedValues: [],
-      leftSelectedValues: [],
-      nonSelectedValues: []
-    };
-    _this._onClickUnSelectFromLeft = _this._onClickUnSelectFromLeft.bind(_this);
-    _this._onClickUnSelectFromRight = _this._onClickUnSelectFromRight.bind(_this);
-    _this._onClickSelectToRight = _this._onClickSelectToRight.bind(_this);
-    _this._onClickSelectToLeft = _this._onClickSelectToLeft.bind(_this);
-    return _this;
-  }
+		_this.state = {
+			rightSelectedValues: [],
+			leftSelectedValues: [],
+			nonSelectedValues: []
+		};
+		_this._onClickUnSelectFromLeft = _this._onClickUnSelectFromLeft.bind(_this);
+		_this._onClickUnSelectFromRight = _this._onClickUnSelectFromRight.bind(_this);
+		_this._onClickSelectToRight = _this._onClickSelectToRight.bind(_this);
+		_this._onClickSelectToLeft = _this._onClickSelectToLeft.bind(_this);
+		return _this;
+	}
 
-  TripleSelectBox.prototype._excludeValues = function _excludeValues() {
-    var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var valuesToExclude = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-    var compareFn = this.props.compareFn;
+	TripleSelectBox.prototype._excludeValues = function _excludeValues() {
+		var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+		var valuesToExclude = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+		var compareFn = this.props.compareFn;
 
-    if (compareFn instanceof Function) {
-      return values.filter(function (value) {
-        return !valuesToExclude.some(function (valueToExclude) {
-          return compareFn(valueToExclude, value);
-        });
-      });
-    }
-    return values.filter(function (value) {
-      return !valuesToExclude.some(function (exclude) {
-        return exclude == value;
-      });
-    });
-  };
+		if (compareFn instanceof Function) {
+			return values.filter(function (value) {
+				return !valuesToExclude.some(function (valueToExclude) {
+					return compareFn(valueToExclude, value);
+				});
+			});
+		}
+		return values.filter(function (value) {
+			return !valuesToExclude.some(function (exclude) {
+				return exclude == value;
+			});
+		});
+	};
 
-  TripleSelectBox.prototype._addValues = function _addValues() {
-    var arrayToAdd = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var valuesToAdd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+	TripleSelectBox.prototype._addValues = function _addValues() {
+		var arrayToAdd = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+		var valuesToAdd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
-    return arrayToAdd.concat(valuesToAdd);
-  };
+		return arrayToAdd.concat(valuesToAdd);
+	};
 
-  TripleSelectBox.prototype._unSelectNode = function _unSelectNode(id) {
-    var selectBoxChilds = document.getElementById(id).childNodes;
-    selectBoxChilds.forEach(function (node) {
-      if (node.selected) {
-        node.selected = false;
-        return;
-      }
-    });
-  };
+	TripleSelectBox.prototype._unSelectNode = function _unSelectNode(id) {
+		var selectBoxChilds = document.getElementById(id).childNodes;
+		selectBoxChilds.forEach(function (node) {
+			if (node.selected) {
+				node.selected = false;
+				return;
+			}
+		});
+	};
 
-  TripleSelectBox.prototype._onClickSelectToRight = function _onClickSelectToRight() {
-    var _props = this.props,
-        id = _props.id,
-        onChange = _props.onChange;
+	TripleSelectBox.prototype._onClickSelectToRight = function _onClickSelectToRight() {
+		var _props = this.props,
+		    id = _props.id,
+		    onChange = _props.onChange;
 
-    var clickedCodesForSelection = this.state.nonSelectedValues;
+		var clickedCodesForSelection = this.state.nonSelectedValues;
 
-    var _props2 = this.props,
-        centerValues = _props2.centerValues,
-        rightValues = _props2.rightValues;
-    var leftValues = this.props.leftValues;
-
-
-    centerValues = this._excludeValues(centerValues, clickedCodesForSelection);
-    rightValues = this._addValues(rightValues, clickedCodesForSelection);
-
-    onChange(leftValues, centerValues, rightValues);
-
-    this.setState({ nonSelectedValues: [] });
-    this._unSelectNode(id + '-center-select-values-box');
-  };
-
-  TripleSelectBox.prototype._onClickSelectToLeft = function _onClickSelectToLeft() {
-    var _props3 = this.props,
-        id = _props3.id,
-        onChange = _props3.onChange;
-
-    var clickedCodesForSelection = this.state.nonSelectedValues;
-
-    var _props4 = this.props,
-        leftValues = _props4.leftValues,
-        centerValues = _props4.centerValues;
-    var rightValues = this.props.rightValues;
+		var _props2 = this.props,
+		    centerValues = _props2.centerValues,
+		    rightValues = _props2.rightValues;
+		var leftValues = this.props.leftValues;
 
 
-    centerValues = this._excludeValues(centerValues, clickedCodesForSelection);
-    leftValues = this._addValues(leftValues, clickedCodesForSelection);
+		centerValues = this._excludeValues(centerValues, clickedCodesForSelection);
+		rightValues = this._addValues(rightValues, clickedCodesForSelection);
 
-    onChange(leftValues, centerValues, rightValues);
+		onChange(leftValues, centerValues, rightValues);
 
-    this.setState({ nonSelectedValues: [] });
-    this._unSelectNode(id + '-center-select-values-box');
-  };
+		this.setState({ nonSelectedValues: [] });
+		this._unSelectNode(id + '-center-select-values-box');
+	};
 
-  TripleSelectBox.prototype._onClickUnSelectFromLeft = function _onClickUnSelectFromLeft() {
-    var _props5 = this.props,
-        id = _props5.id,
-        onChange = _props5.onChange;
+	TripleSelectBox.prototype._onClickSelectToLeft = function _onClickSelectToLeft() {
+		var _props3 = this.props,
+		    id = _props3.id,
+		    onChange = _props3.onChange;
 
-    var clickedCodesForUnSelection = this.state.leftSelectedValues;
-    var rightValues = this.props.rightValues;
-    var _props6 = this.props,
-        leftValues = _props6.leftValues,
-        centerValues = _props6.centerValues;
+		var clickedCodesForSelection = this.state.nonSelectedValues;
 
-
-    leftValues = this._excludeValues(leftValues, clickedCodesForUnSelection);
-    centerValues = this._addValues(centerValues, clickedCodesForUnSelection);
-
-    onChange(leftValues, centerValues, rightValues);
-
-    this.setState({ leftSelectedValues: [] });
-    this._unSelectNode(id + '-left-select-values-box');
-  };
-
-  TripleSelectBox.prototype._onClickUnSelectFromRight = function _onClickUnSelectFromRight() {
-    var _props7 = this.props,
-        id = _props7.id,
-        onChange = _props7.onChange;
-
-    var clickedCodesForUnSelection = this.state.rightSelectedValues;
-    var leftValues = this.props.leftValues;
-    var _props8 = this.props,
-        rightValues = _props8.rightValues,
-        centerValues = _props8.centerValues;
+		var _props4 = this.props,
+		    leftValues = _props4.leftValues,
+		    centerValues = _props4.centerValues;
+		var rightValues = this.props.rightValues;
 
 
-    rightValues = this._excludeValues(rightValues, clickedCodesForUnSelection);
-    centerValues = this._addValues(centerValues, clickedCodesForUnSelection);
+		centerValues = this._excludeValues(centerValues, clickedCodesForSelection);
+		leftValues = this._addValues(leftValues, clickedCodesForSelection);
 
-    onChange(leftValues, centerValues, rightValues);
+		onChange(leftValues, centerValues, rightValues);
 
-    this.setState({ rightSelectedValues: [] });
-    this._unSelectNode(id + '-right-select-values-box');
-  };
+		this.setState({ nonSelectedValues: [] });
+		this._unSelectNode(id + '-center-select-values-box');
+	};
 
-  TripleSelectBox.prototype._renderLeftPanel = function _renderLeftPanel() {
-    var _this2 = this;
+	TripleSelectBox.prototype._onClickUnSelectFromLeft = function _onClickUnSelectFromLeft() {
+		var _props5 = this.props,
+		    id = _props5.id,
+		    onChange = _props5.onChange;
 
-    var _props9 = this.props,
-        id = _props9.id,
-        titleLeftBox = _props9.titleLeftBox;
-    var leftValues = this.props.leftValues;
-
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { style: { display: 'inline-block', textAlign: 'center' }, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 109
-        },
-        __self: this
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'label',
-        {
-          className: 'label-style',
-          style: _extends({}, this.props.labelStyle),
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 110
-          },
-          __self: this
-        },
-        titleLeftBox
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'select',
-        {
-          id: id + '-left-select-values-box',
-          onChange: function onChange(ev) {
-            leftValues = Array.apply(null, ev.target.options).filter(function (option) {
-              return option.selected;
-            }).map(function (o) {
-              return o.value;
-            });
-            _this2.setState({ leftSelectedValues: leftValues });
-          },
-          className: 'box-style',
-          style: _extends({}, this.props.boxStyle),
-          size: this.props.numberOfLines || DEFAULT_LINES_NUM,
-          multiple: true,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 116
-          },
-          __self: this
-        },
-        leftValues.map(function (value) {
-          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'option',
-            { key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 128
-              },
-              __self: _this2
-            },
-            value
-          );
-        })
-      )
-    );
-  };
-
-  TripleSelectBox.prototype._renderRightPanel = function _renderRightPanel() {
-    var _this3 = this;
-
-    var _props10 = this.props,
-        id = _props10.id,
-        titleRightBox = _props10.titleRightBox;
-    var rightValues = this.props.rightValues;
+		var clickedCodesForUnSelection = this.state.leftSelectedValues;
+		var rightValues = this.props.rightValues;
+		var _props6 = this.props,
+		    leftValues = _props6.leftValues,
+		    centerValues = _props6.centerValues;
 
 
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { style: { display: 'inline-block', textAlign: 'center' }, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 139
-        },
-        __self: this
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'label',
-        {
-          className: 'label-style',
-          style: _extends({}, this.props.labelStyle),
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 140
-          },
-          __self: this
-        },
-        titleRightBox
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'select',
-        {
-          id: id + '-right-select-values-box',
-          onChange: function onChange(ev) {
-            rightValues = Array.apply(null, ev.target.options).filter(function (option) {
-              return option.selected;
-            }).map(function (o) {
-              return o.value;
-            });
-            _this3.setState({ rightSelectedValues: rightValues });
-          },
-          className: 'box-style',
-          style: _extends({}, this.props.boxStyle),
-          size: this.props.numberOfLines || DEFAULT_LINES_NUM,
-          multiple: true,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 146
-          },
-          __self: this
-        },
-        rightValues.map(function (value) {
-          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'option',
-            { key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 158
-              },
-              __self: _this3
-            },
-            value
-          );
-        })
-      )
-    );
-  };
+		leftValues = this._excludeValues(leftValues, clickedCodesForUnSelection);
+		centerValues = this._addValues(centerValues, clickedCodesForUnSelection);
 
-  TripleSelectBox.prototype._renderCenterPanel = function _renderCenterPanel() {
-    var _this4 = this;
+		onChange(leftValues, centerValues, rightValues);
 
-    var _props11 = this.props,
-        id = _props11.id,
-        titleNonselectedBox = _props11.titleNonselectedBox;
-    var centerValues = this.props.centerValues;
+		this.setState({ leftSelectedValues: [] });
+		this._unSelectNode(id + '-left-select-values-box');
+	};
+
+	TripleSelectBox.prototype._onClickUnSelectFromRight = function _onClickUnSelectFromRight() {
+		var _props7 = this.props,
+		    id = _props7.id,
+		    onChange = _props7.onChange;
+
+		var clickedCodesForUnSelection = this.state.rightSelectedValues;
+		var leftValues = this.props.leftValues;
+		var _props8 = this.props,
+		    rightValues = _props8.rightValues,
+		    centerValues = _props8.centerValues;
 
 
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { style: { display: 'inline-block', textAlign: 'center' }, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 169
-        },
-        __self: this
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'label',
-        {
-          className: 'label-style',
-          style: _extends({}, this.props.labelStyle),
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 170
-          },
-          __self: this
-        },
-        titleNonselectedBox
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'select',
-        {
-          id: id + '-center-select-values-box',
-          onChange: function onChange(ev) {
-            centerValues = Array.apply(null, ev.target.options).filter(function (option) {
-              return option.selected;
-            }).map(function (o) {
-              return o.value;
-            });
-            _this4.setState({ nonSelectedValues: centerValues });
-          },
-          className: 'box-style',
-          style: _extends({}, this.props.boxStyle),
-          size: this.props.numberOfLines || DEFAULT_LINES_NUM,
-          multiple: true,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 176
-          },
-          __self: this
-        },
-        centerValues.map(function (value) {
-          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'option',
-            { key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 188
-              },
-              __self: _this4
-            },
-            value
-          );
-        })
-      )
-    );
-  };
+		rightValues = this._excludeValues(rightValues, clickedCodesForUnSelection);
+		centerValues = this._addValues(centerValues, clickedCodesForUnSelection);
 
-  TripleSelectBox.prototype._renderLeftButtons = function _renderLeftButtons() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { style: { display: 'inline-block', bottom: '60px', position: 'relative' }, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 196
-        },
-        __self: this
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-        id: 'btnRight',
-        type: 'button',
-        className: 'input-style btn-arrows',
-        value: '>>',
-        onClick: this._onClickUnSelectFromLeft,
-        disabled: !this.state.leftSelectedValues.length,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 197
-        },
-        __self: this
-      }),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-        id: 'btnLeft',
-        type: 'button',
-        className: 'input-style btn-arrows',
-        value: '<<',
-        onClick: this._onClickSelectToLeft,
-        disabled: !this.state.nonSelectedValues.length,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 205
-        },
-        __self: this
-      })
-    );
-  };
+		onChange(leftValues, centerValues, rightValues);
 
-  TripleSelectBox.prototype._renderRightButtons = function _renderRightButtons() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { style: { display: 'inline-block', bottom: '60px', position: 'relative' }, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 219
-        },
-        __self: this
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-        id: 'btnRight',
-        type: 'button',
-        className: 'input-style btn-arrows',
-        style: _extends({}, this.props.inputStyle),
-        value: '>>',
-        onClick: this._onClickSelectToRight,
-        disabled: !this.state.nonSelectedValues.length,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 220
-        },
-        __self: this
-      }),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-        id: 'btnLeft',
-        type: 'button',
-        className: 'input-style btn-arrows',
-        style: _extends({}, this.props.inputStyle),
-        value: '<<',
-        onClick: this._onClickUnSelectFromRight,
-        disabled: !this.state.rightSelectedValues.length,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 229
-        },
-        __self: this
-      })
-    );
-  };
+		this.setState({ rightSelectedValues: [] });
+		this._unSelectNode(id + '-right-select-values-box');
+	};
 
-  TripleSelectBox.prototype.render = function render() {
-    var id = this.props.id;
+	TripleSelectBox.prototype._renderLeftPanel = function _renderLeftPanel() {
+		var _this2 = this;
 
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { id: id, style: { display: 'inline-block', padding: '10px', margin: 'auto' }, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 245
-        },
-        __self: this
-      },
-      this._renderLeftPanel(),
-      this._renderLeftButtons(),
-      this._renderCenterPanel(),
-      this._renderRightButtons(),
-      this._renderRightPanel()
-    );
-  };
+		var _props9 = this.props,
+		    id = _props9.id,
+		    titleLeftBox = _props9.titleLeftBox;
+		var leftValues = this.props.leftValues;
 
-  return TripleSelectBox;
+
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'div',
+			{ style: { display: 'inline-block', textAlign: 'center' }, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 109
+				},
+				__self: this
+			},
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'label',
+				{
+					className: 'label-style',
+					style: _extends({}, this.props.labelStyle),
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 110
+					},
+					__self: this
+				},
+				titleLeftBox
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'select',
+				{
+					id: id + '-left-select-values-box',
+					onChange: function onChange(ev) {
+						leftValues = Array.apply(null, ev.target.options).filter(function (option) {
+							return option.selected;
+						}).map(function (o) {
+							return o.value;
+						});
+						_this2.setState({ leftSelectedValues: leftValues });
+					},
+					className: 'box-style',
+					style: _extends({}, this.props.boxStyle),
+					size: this.props.numberOfLines || DEFAULT_LINES_NUM,
+					multiple: true,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 116
+					},
+					__self: this
+				},
+				leftValues.map(function (value) {
+					return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'option',
+						{ key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value, __source: {
+								fileName: _jsxFileName,
+								lineNumber: 128
+							},
+							__self: _this2
+						},
+						value
+					);
+				})
+			)
+		);
+	};
+
+	TripleSelectBox.prototype._renderRightPanel = function _renderRightPanel() {
+		var _this3 = this;
+
+		var _props10 = this.props,
+		    id = _props10.id,
+		    titleRightBox = _props10.titleRightBox;
+		var rightValues = this.props.rightValues;
+
+
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'div',
+			{ style: { display: 'inline-block', textAlign: 'center' }, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 139
+				},
+				__self: this
+			},
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'label',
+				{
+					className: 'label-style',
+					style: _extends({}, this.props.labelStyle),
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 140
+					},
+					__self: this
+				},
+				titleRightBox
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'select',
+				{
+					id: id + '-right-select-values-box',
+					onChange: function onChange(ev) {
+						rightValues = Array.apply(null, ev.target.options).filter(function (option) {
+							return option.selected;
+						}).map(function (o) {
+							return o.value;
+						});
+						_this3.setState({ rightSelectedValues: rightValues });
+					},
+					className: 'box-style',
+					style: _extends({}, this.props.boxStyle),
+					size: this.props.numberOfLines || DEFAULT_LINES_NUM,
+					multiple: true,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 146
+					},
+					__self: this
+				},
+				rightValues.map(function (value) {
+					return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'option',
+						{ key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value, __source: {
+								fileName: _jsxFileName,
+								lineNumber: 158
+							},
+							__self: _this3
+						},
+						value
+					);
+				})
+			)
+		);
+	};
+
+	TripleSelectBox.prototype._renderCenterPanel = function _renderCenterPanel() {
+		var _this4 = this;
+
+		var _props11 = this.props,
+		    id = _props11.id,
+		    titleNonselectedBox = _props11.titleNonselectedBox;
+		var centerValues = this.props.centerValues;
+
+
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'div',
+			{ style: { display: 'inline-block', textAlign: 'center' }, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 169
+				},
+				__self: this
+			},
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'label',
+				{
+					className: 'label-style',
+					style: _extends({}, this.props.labelStyle),
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 170
+					},
+					__self: this
+				},
+				titleNonselectedBox
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'select',
+				{
+					id: id + '-center-select-values-box',
+					onChange: function onChange(ev) {
+						centerValues = Array.apply(null, ev.target.options).filter(function (option) {
+							return option.selected;
+						}).map(function (o) {
+							return o.value;
+						});
+						_this4.setState({ nonSelectedValues: centerValues });
+					},
+					className: 'box-style',
+					style: _extends({}, this.props.boxStyle),
+					size: this.props.numberOfLines || DEFAULT_LINES_NUM,
+					multiple: true,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 176
+					},
+					__self: this
+				},
+				centerValues.map(function (value) {
+					return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'option',
+						{ key: value, className: 'select-box-option', style: { fontSize: '14px', fontWeight: 600 }, value: value, __source: {
+								fileName: _jsxFileName,
+								lineNumber: 188
+							},
+							__self: _this4
+						},
+						value
+					);
+				})
+			)
+		);
+	};
+
+	TripleSelectBox.prototype._renderLeftButtons = function _renderLeftButtons() {
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'div',
+			{ style: { display: 'inline-block', bottom: '60px', position: 'relative' }, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 196
+				},
+				__self: this
+			},
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+				id: 'btnRight',
+				type: 'button',
+				className: 'input-style btn-arrows',
+				value: '>>',
+				onClick: this._onClickUnSelectFromLeft,
+				disabled: !this.state.leftSelectedValues.length,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 197
+				},
+				__self: this
+			}),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+				id: 'btnLeft',
+				type: 'button',
+				className: 'input-style btn-arrows',
+				value: '<<',
+				onClick: this._onClickSelectToLeft,
+				disabled: !this.state.nonSelectedValues.length,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 205
+				},
+				__self: this
+			})
+		);
+	};
+
+	TripleSelectBox.prototype._renderRightButtons = function _renderRightButtons() {
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'div',
+			{ style: { display: 'inline-block', bottom: '60px', position: 'relative' }, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 219
+				},
+				__self: this
+			},
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+				id: 'btnRight',
+				type: 'button',
+				className: 'input-style btn-arrows',
+				style: _extends({}, this.props.inputStyle),
+				value: '>>',
+				onClick: this._onClickSelectToRight,
+				disabled: !this.state.nonSelectedValues.length,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 220
+				},
+				__self: this
+			}),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+				id: 'btnLeft',
+				type: 'button',
+				className: 'input-style btn-arrows',
+				style: _extends({}, this.props.inputStyle),
+				value: '<<',
+				onClick: this._onClickUnSelectFromRight,
+				disabled: !this.state.rightSelectedValues.length,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 229
+				},
+				__self: this
+			})
+		);
+	};
+
+	TripleSelectBox.prototype.render = function render() {
+		var id = this.props.id;
+
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'div',
+			{ id: id, style: { display: 'inline-block', padding: '10px', margin: 'auto' }, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 245
+				},
+				__self: this
+			},
+			this._renderLeftPanel(),
+			this._renderLeftButtons(),
+			this._renderCenterPanel(),
+			this._renderRightButtons(),
+			this._renderRightPanel()
+		);
+	};
+
+	return TripleSelectBox;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 
 
 
 TripleSelectBox.propTypes = {
-  id: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-  numberOfLines: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number,
-  boxStyle: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.object,
-  labelStyle: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.object,
-  inputStyle: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.object,
-  rightValues: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.array.isRequired,
-  leftValues: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.array.isRequired,
-  centerValues: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.array.isRequired,
-  titleRightBox: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-  titleLeftBox: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-  titleNonselectedBox: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-  compareFn: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func,
-  onChange: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func.isRequired
+	id: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
+	numberOfLines: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number,
+	boxStyle: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.object,
+	labelStyle: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.object,
+	inputStyle: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.object,
+	rightValues: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.array.isRequired,
+	leftValues: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.array.isRequired,
+	centerValues: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.array.isRequired,
+	titleRightBox: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
+	titleLeftBox: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
+	titleNonselectedBox: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
+	compareFn: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func,
+	onChange: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func.isRequired
 };
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 3 */
