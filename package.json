@@ -29,12 +29,12 @@
   },
   "devDependencies": {
     "css-loader": "^0.26.4",
-    "eslint": "^5.0.1",
+    "eslint": "^5.15.1",
     "jsx-control-statements": "^3.2.8",
-    "nwb": "^0.15.9",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0",
-    "prop-types": "^15.6.2",
+    "nwb": "^0.23.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "style-loader": "^0.13.2"
   },
   "author": {
