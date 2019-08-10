@@ -1,35 +1,33 @@
-import React, { useReducer, useEffect, useRef } from 'react';
+import React, { useReducer, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types'
 
+import './TripleSelectBox.css'
 import SelectBox from '../../components/SelectBox';
 import SelectBoxControl from '../../components/SelectBoxControl';
 import { ACTIONS, reducer, initializer } from '../../state'
-import './TripleSelectBox.css'
+import { getOptions } from '../../selectors'
+import { useUpdate } from './useUpdate'
+
 
 const TripleSelectBox = props => {
 
     const [ state, dispatch ] = useReducer(reducer, props, initializer)
 
-    const setLeftValuesSelection = valuesToSelect => dispatch({ type: ACTIONS.SELECT_LEFT_VALUES, valuesToSelect })
-    const setCenterValuesSelection = valuesToSelect => dispatch({ type: ACTIONS.SELECT_CENTER_VALUES, valuesToSelect })
-    const setRightValuesSelection = valuesToSelect => dispatch({ type: ACTIONS.SELECT_RIGHT_VALUES, valuesToSelect })
+    const setLeftOptionsSelection = valuesToSelect => dispatch({ type: ACTIONS.SELECT_LEFT_VALUES, valuesToSelect })
+    const setCenterOptionsSelection = valuesToSelect => dispatch({ type: ACTIONS.SELECT_CENTER_VALUES, valuesToSelect })
+    const setRightOptionsSelection = valuesToSelect => dispatch({ type: ACTIONS.SELECT_RIGHT_VALUES, valuesToSelect })
 
-    const onChange = ACTION_ID => () => { dispatch({ type: ACTION_ID }) }
+    const onChange = ACTION_ID => () => {  dispatch({ type: ACTION_ID }) }
 
     const leftToCenter = onChange(ACTIONS.LEFT_TO_CENTER)
     const centerToLeft = onChange(ACTIONS.CENTER_TO_LEFT)
     const rightToCenter = onChange(ACTIONS.RIGTH_TO_CENTER)
     const centerToRight = onChange(ACTIONS.CENTER_TO_RIGHT)
 
-    const isInitialMount = useRef(true)
-
-    useEffect(() => {
-        if (isInitialMount.current) {
-            isInitialMount.current = false
-            return
-        }
-        props.onChange(state.values)
-    }, [ state.values ])
+    useUpdate({
+        deps: [ getOptions(state.options) ],
+        onUpdate: () => props.onChange(getOptions(state.options))
+    })
 
 	return (
 		<section style={props.styles?.container} className="container">
@@ -37,52 +35,53 @@ const TripleSelectBox = props => {
                 title={props.titles?.left}
                 numberOfLines={props.numberOfLines?.left}
                 styles={props.styles?.box}
-                onSelect={setLeftValuesSelection}
-                values={state.values.left}
+                onSelect={setLeftOptionsSelection}
+                options={state.options.left}
             />
             <SelectBoxControl
                 styles={props.styles?.boxController}
                 sendToLeft={centerToLeft}
-                sendToLeftDisabled={state.selections.center.length === 0}
+                sendToLeftDisabled={state.options.center.every(({ selected }) => !selected)}
                 sendToRight={leftToCenter}
-                sendToRightDisabled={state.selections.left.length === 0}
+                sendToRightDisabled={state.options.left.every(({ selected }) => !selected)}
             />
             <SelectBox
                 title={props.titles?.center}
                 numberOfLines={props.numberOfLines?.center}
                 styles={props.styles?.box}
-                onSelect={setCenterValuesSelection}
-                values={state.values.center}
+                onSelect={setCenterOptionsSelection}
+                options={state.options.center}
             />
             <SelectBoxControl
                 styles={props.styles?.boxController}
                 sendToLeft={rightToCenter}
-                sendToLeftDisabled={state.selections.right.length === 0}
+                sendToLeftDisabled={state.options.right.every(({ selected }) => !selected)}
                 sendToRight={centerToRight}
-                sendToRightDisabled={state.selections.center.length === 0}
+                sendToRightDisabled={state.options.center.every(({ selected }) => !selected)}
             />
             <SelectBox
                 title={props.titles?.right}
                 numberOfLines={props.numberOfLines?.right}
                 styles={props.styles?.box}
-                onSelect={setRightValuesSelection}
-                values={state.values.right}
+                onSelect={setRightOptionsSelection}
+                options={state.options.right}
             />
 		</section>
 	)
 }
 
+const Option = PropTypes.shape({
+    value: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]).isRequired,
+    label: PropTypes.string,
+    selected: PropTypes.bool
+})
+
 TripleSelectBox.propTypes = {
-    initialValues: PropTypes.shape({
-        left: PropTypes.array.isRequired,
-        center: PropTypes.array.isRequired,
-        right: PropTypes.array.isRequired
+    options: PropTypes.shape({
+        left: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.number, PropTypes.string, Option ])),
+        center: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.number, PropTypes.string, Option ])),
+        right: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.number, PropTypes.string, Option ]))
     }).isRequired,
-    initialSelections: PropTypes.shape({
-        left: PropTypes.array.isRequired,
-        center: PropTypes.array.isRequired,
-        right: PropTypes.array.isRequired
-    }),
     titles: PropTypes.shape({
         left: PropTypes.string,
         center: PropTypes.string,

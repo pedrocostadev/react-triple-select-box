@@ -4,25 +4,26 @@ import { render, fireEvent, cleanup } from '@testing-library/react'
 import SelectBox from './'
 
 describe('<SelectBox />', () => {
-  afterEach(cleanup)
 
+  afterEach(cleanup)
+  
   it('should render the options', () => {
     const props = {
-      values: ['1', '2'],
+      options: [ { value: '1' }, { value: '2' } ],
       onSelect: () => {}
     }
 
     const { container } = render(<SelectBox {...props} />)
     const select = container.querySelector('select')
 
-    expect(select.children).toHaveLength(props.values.length)
-    expect(Array.from(select.children).every(child => props.values.includes(child.value))).toBeTruthy()
+    expect(select.children).toHaveLength(props.options.length)
+    expect(Array.from(select.children).every(child => props.options.map(({ value }) => value).includes(child.value))).toBeTruthy()
   })
 
   it('should render the number of lines according props', () => {
     const props = {
       numberOfLines: 60,
-      values: ['1', '2'],
+      options: [ { value: '1' }, { value: '2' } ],
       onSelect: () => {}
     }
 
@@ -33,7 +34,7 @@ describe('<SelectBox />', () => {
 
   it('should call onSelection on options click', () => {
     const props = {
-      values: ['1', '2', '3'],
+      options: [ { value: '1' }, { value: '2' }, { value: '3' } ],
       onSelect: jest.fn()
     }
 
@@ -48,11 +49,12 @@ describe('<SelectBox />', () => {
   it('should render the label', () => {
     const props = {
       title: 'The box',
-      values: ['1', '2', '3'],
+      options: [ { value: '1' }, { value: '2' }, { value: '3' } ],
       onSelect: () => {}
     }
 
     const { getByText } = render(<SelectBox {...props} />)
     expect(getByText('The box')).toBeTruthy()
   })
+
 })

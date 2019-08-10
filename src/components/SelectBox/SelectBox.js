@@ -6,8 +6,7 @@ import './SelectBox.css'
 
 const DEFAULT_ROWS_NUMBER = 10
 
-const SelectBox = ({ title, values, numberOfLines, onSelect, styles }) => {
-	return (
+const SelectBox = ({ title, options, numberOfLines, onSelect, styles }) => (
 		<section style={styles?.container} className="select-box-container" >
 			<label className="select-box-label" style={styles?.label}>{title}</label>
 			<select
@@ -17,24 +16,29 @@ const SelectBox = ({ title, values, numberOfLines, onSelect, styles }) => {
 				size={numberOfLines}
 				multiple
 			>
-				{values.map((value) => (
+				{options.map(({ value, selected, label }) => (
 					<option
-						className="select-box-option"
+						className={`select-box-option${selected ? ' select-box-option-selected' : '' }`}
 						style={styles?.selectOption}
 						key={value}
 						value={value}
 					>
-						{value}
+						{label ? label : value}
 					</option>
 				))}
 			</select>
 		</section>
-	);
-};
+	)
 
 SelectBox.propTypes = {
 	title: PropTypes.string,
-	values: PropTypes.array.isRequired,
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			value: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]).isRequired,
+			label: PropTypes.string,
+			selected: PropTypes.bool
+		})
+	),
 	numberOfLines: PropTypes.number,
 	onSelect: PropTypes.func.isRequired,
 	styles: PropTypes.object
