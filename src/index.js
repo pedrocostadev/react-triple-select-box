@@ -1,1 +1,2 @@
-export { TripleSelectBox } from './TripleSelectBox.jsx';
+import TripleSelectBox from './containers/TripleSelectBox'
+export default TripleSelectBox
