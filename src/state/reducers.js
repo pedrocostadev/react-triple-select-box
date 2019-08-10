@@ -53,7 +53,7 @@ export function reducer (state, action) {
       return {
         options: {
           ...options,
-          left: options.left.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) })) 
+          left: options.left.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) }))
         }
       }
     }
@@ -61,7 +61,7 @@ export function reducer (state, action) {
       return {
         options: {
           ...options,
-          center: options.center.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) })) 
+          center: options.center.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) }))
         }
       }
     }
@@ -69,7 +69,7 @@ export function reducer (state, action) {
       return {
         options: {
           ...options,
-          right: options.right.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) })) 
+          right: options.right.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) }))
         }
       }
     }
