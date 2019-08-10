@@ -8,7 +8,7 @@ A simple, dependencies-free and dumb react component to render triple select box
 #### CommonJS Import
 	const TripleSelectBox = require('react-triple-select-box')
 #### ES6 Import
-	import TripleSelectBox from 'react-triple-select-box';
+	import TripleSelectBox from 'react-triple-select-box'
 #### Props
 ```js
     initialValues: {
@@ -49,7 +49,11 @@ A simple, dependencies-free and dumb react component to render triple select box
 #### Example
 ```js
 	<TripleSelectBox
-    	initialValues={initialValues}
+    	initialValues={{
+            left: ['Courgette', 'Date', 'Grape', 'Garlic', 'Fig', 'Endive', 'Fennel'],
+            center: ['Mango', 'Lemon', 'Leek', 'Guava', 'Mushroom', 'Melon'],
+            right: ['Apple', 'Orange', 'Apricot', 'Avocado', 'Beetroot', 'Broccoli', 'Carrot', 'Clementine']
+        }}
         onChange={values => {
         	console.log({ values })
         }}
