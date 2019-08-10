@@ -1,93 +1,75 @@
 import { ACTIONS } from './actions'
+import { getSelected, getUnselected } from '../selectors/'
 
 export function reducer (state, action) {
-  const { values, selections } = state
+  const { options } = state
 
   switch (action.type) {
     case ACTIONS.LEFT_TO_CENTER: {
-      const newLeftValues = values.left.filter((value) => !selections.left.includes(value))
-      const newCenterValues = values.center.concat(selections.left)
+      const newLeftValues = getUnselected(options.left)
+      const newCenterValues = options.center.concat(getSelected(options.left))
       return {
-        values: {
-          ...values,
+        options: {
+          ...options,
           left: newLeftValues,
           center: newCenterValues
-        },
-        selections: {
-          ...selections,
-          left: []
         }
       }
     }
     case ACTIONS.CENTER_TO_LEFT: {
-      const newCenterValues = values.center.filter((value) => !selections.center.includes(value))
-      const newLeftValues = values.left.concat(selections.center)
+      const newCenterValues = getUnselected(options.center)
+      const newLeftValues = options.left.concat(getSelected(options.center))
       return {
-        values: {
-          ...values,
+        options: {
+          ...options,
           left: newLeftValues,
           center: newCenterValues
-        },
-        selections: {
-          ...selections,
-          center: []
         }
       }
     }
     case ACTIONS.RIGTH_TO_CENTER: {
-      const newRightValues = values.right.filter((value) => !selections.right.includes(value))
-      const newCenterValues = values.center.concat(selections.right)
+      const newRightValues = getUnselected(options.right)
+      const newCenterValues = options.center.concat(getSelected(options.right))
       return {
-        values: {
-          ...values,
+        options: {
+          ...options,
           right: newRightValues,
           center: newCenterValues
-        },
-        selections: {
-          ...selections,
-          right: []
         }
       }
     }
     case ACTIONS.CENTER_TO_RIGHT: {
-      const newCenterValues = values.center.filter((value) => !selections.center.includes(value))
-      const newRightValues = values.right.concat(selections.center)
+      const newCenterValues = getUnselected(options.center)
+      const newRightValues = options.right.concat(getSelected(options.center))
       return {
-        values: {
-          ...values,
+        options: {
+          ...options,
           right: newRightValues,
           center: newCenterValues
-        },
-        selections: {
-          ...selections,
-          center: []
         }
       }
     }
     case ACTIONS.SELECT_LEFT_VALUES: {
       return {
-        values,
-        selections: {
-          ...selections,
-          left: action.valuesToSelect
+        options: {
+          ...options,
+          left: options.left.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) })) 
         }
       }
     }
     case ACTIONS.SELECT_CENTER_VALUES: {
       return {
-        values,
-        selections: {
-          ...selections,
-          center: action.valuesToSelect
+        options: {
+          ...options,
+          center: options.center.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) })) 
         }
       }
     }
     case ACTIONS.SELECT_RIGHT_VALUES: {
       return {
-        values,
-        selections: {
-          ...selections,
-          right: action.valuesToSelect
+        options: {
+          ...options,
+          right: options.right.map(({ value }) => ({ value, selected: action.valuesToSelect.includes(value) })) 
         }
       }
     }

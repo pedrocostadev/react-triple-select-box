@@ -10,49 +10,86 @@ A simple, dependencies-free and dumb react component to render triple select box
 #### ES6 Import
 	import TripleSelectBox from 'react-triple-select-box'
 #### Props
+
+##### Valid option formats
+
+- ##### Object:
 ```js
-    initialValues: {
-        left, // Array of initial values to be rendered on left select box
-        center, // Array of initial values to be rendered on center select box
-        right // Array of initial values to be rendered on right select box
-    },
-    initialSelections: {
-        left, // Array of initial selected values on left select box
-        center, // Array of initial selected values on center select box
-        right // Array of initial selected values on right select box
-    },
-    titles: {
-        left, //  Left Select Box Tile
-        center, // Center Select Box Tile
-        right // Right Select Box Tile
-    },
-    numberOfLines: {
-        left, //  Left Select Box size
-        center, // Center Select Box size
-        right // Right Select Box size
-    },
-    styles: {
-        container, // Root container style
-        box: {
-            label, // Select box labels style,
-            container, // Select box containers style
-            select, // Select Boxes styles
-            selectOption // Select Options style
-        },
-        boxController: {
-            container, // Select box controller container style
-            button // Button controller style
-        }
-    },
-    onChange: ({ left, center, right }) => {} // Callback invoked on values changes
+    {
+        /* MANDATORY */
+        value, // oneOfType: [ number, string ]
+        /* OPTIONAL */
+        label, // string
+        /* OPTIONAL */
+        selected, // boolean
+    }
 ```
-#### Example
+
+- ##### String or Number: 
+```js
+    'A valid option'
+    12
+```
+
+##### All props
+```js
+    {
+        /* MANDATORY */
+        options: {
+            left, // Array of options to be rendered on left select box
+            center, // Array of options to be rendered on center select box
+            right // Array of options to be rendered on right select box
+        },
+        /* OPTIONAL */
+        titles: {
+            left, //  Left Select Box Tile (string)
+            center, // Center Select Box Tile (string)
+            right // Right Select Box Tile (string)
+        },
+        /* OPTIONAL */
+        numberOfLines: {
+            left, //  Left Select Box size (number)
+            center, // Center Select Box size (number)
+            right // Right Select Box size (number)
+        },
+        /* OPTIONAL */
+        styles: {
+            container, // Root container style (Object)
+            box: {
+                label, // Select box labels style, (Object)
+                container, // Select box containers style (Object)
+                select, // Select Boxes styles (Object)
+                selectOption // Select Options style (Object)
+            },
+            boxController: {
+                container, // Select box controller container style (Object)
+                button // Button controller style (Object)
+            }
+        },
+        /* MANDATORY */
+        onChange: ({ left, center, right }) => {} // Callback invoked on values changes
+    }
+```
+#### Examples
 ```js
 	<TripleSelectBox
-    	initialValues={{
-            left: ['Courgette', 'Date', 'Grape', 'Garlic', 'Fig', 'Endive', 'Fennel'],
-            center: ['Mango', 'Lemon', 'Leek', 'Guava', 'Mushroom', 'Melon'],
-            right: ['Apple', 'Orange', 'Apricot', 'Avocado', 'Beetroot', 'Broccoli', 'Carrot', 'Clementine']
+    	options={{
+            left: [ 'Courgette', 'Date', 'Grape' ],
+            center: [ 'Mango', 'Lemon', 'Leek', 'Guava', 'Mushroom', 'Melon'] ,
+            right: [ 'Apple', 'Orange' ]
+        }}
+        onChange={values => {
+        	console.log({ values })
+        }}
+    />
+```
+
+```js
+	<TripleSelectBox
+    	options={{
+            left: [ { value: 'Courgette', selected: true, label: 'CGT' }, { value: 'Date' } ],
+            center: [ { value: 'Mango' } ],
+            right: [ { value: 'Apple' }, { value: 'Orange' } ]
         }}
         onChange={values => {
         	console.log({ values })

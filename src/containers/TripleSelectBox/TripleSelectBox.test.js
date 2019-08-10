@@ -8,7 +8,7 @@ describe('<TripleSelectBox />', () => {
 
   it('should render the options', () => {
     const props = {
-      initialValues: {
+      options: {
         left: ['Courgette', 'Date', 'Grape', 'Garlic', 'Fig', 'Endive', 'Fennel'],
         center: ['Mango', 'Lemon', 'Leek', 'Guava', 'Mushroom', 'Melon'],
         right: ['Apple', 'Orange', 'Apricot', 'Avocado', 'Beetroot', 'Broccoli', 'Carrot', 'Clementine']
@@ -20,19 +20,19 @@ describe('<TripleSelectBox />', () => {
     const selects = container.querySelectorAll('select')
     expect(selects).toHaveLength(3)
     expect(
-      Array.from(selects[0].children).every((child) => props.initialValues.left.includes(child.value))
+      Array.from(selects[0].children).every((child) => props.options.left.includes(child.value))
     ).toBeTruthy()
     expect(
-      Array.from(selects[1].children).every((child) => props.initialValues.center.includes(child.value))
+      Array.from(selects[1].children).every((child) => props.options.center.includes(child.value))
     ).toBeTruthy()
     expect(
-      Array.from(selects[2].children).every((child) => props.initialValues.right.includes(child.value))
+      Array.from(selects[2].children).every((child) => props.options.right.includes(child.value))
     ).toBeTruthy()
   })
 
   it('should render the box titles', () => {
     const props = {
-      initialValues: {
+      options: {
         left: ['Courgette', 'Date', 'Grape', 'Garlic', 'Fig', 'Endive', 'Fennel'],
         center: ['Mango', 'Lemon', 'Leek', 'Guava', 'Mushroom', 'Melon'],
         right: ['Apple', 'Orange', 'Apricot', 'Avocado', 'Beetroot', 'Broccoli', 'Carrot', 'Clementine']
@@ -56,7 +56,7 @@ describe('<TripleSelectBox />', () => {
 
   it('should be capable of send values from left to center and vice-versa', () => {
     const props = {
-      initialValues: {
+      options: {
         left: ['a left box value'],
         center: ['3'],
         right: ['5']
@@ -75,9 +75,9 @@ describe('<TripleSelectBox />', () => {
     expect(Array.from(centerSelect.children).some((child) => child.value === 'a left box value')).toBeTruthy()
     expect(props.onChange).toBeCalledTimes(1)
     expect(props.onChange).toHaveBeenLastCalledWith({
-      center: ['3', 'a left box value'],
+      center: [ { value: '3' }, { value: 'a left box value' }],
       left: [],
-      right: ['5']
+      right: [{ value: '5' }]
     })
 
     fireEvent.change(centerSelect, { target: { value: '3' } })
@@ -86,18 +86,18 @@ describe('<TripleSelectBox />', () => {
     expect(Array.from(leftSelect.children).some((child) => child.value === '3')).toBeTruthy()
     expect(props.onChange).toBeCalledTimes(2)
     expect(props.onChange).toHaveBeenLastCalledWith({
-      center: ['a left box value'],
-      left: ['3'],
-      right: ['5']
+      center: [ { value: 'a left box value' } ],
+      left: [ { value: '3' } ],
+      right: [ { value: '5' } ]
     })
   })
 
   it('should be capable of send values from right to center and vice-versa', () => {
     const props = {
-      initialValues: {
-        left: ['a left box value'],
-        center: ['3'],
-        right: ['5']
+      options: {
+        left: [ { value: 'a left box value' } ],
+        center: [ { value: '3' } ],
+        right: [ { value: '5' } ]
       },
       onChange: jest.fn()
     }
@@ -113,8 +113,8 @@ describe('<TripleSelectBox />', () => {
     expect(Array.from(centerSelect.children).some((child) => child.value === '5')).toBeTruthy()
     expect(props.onChange).toBeCalledTimes(1)
     expect(props.onChange).toHaveBeenLastCalledWith({
-      center: ['3', '5'],
-      left: ['a left box value'],
+      center: [ { value: '3' }, { value: '5' } ],
+      left: [ { value: 'a left box value' } ],
       right: []
     })
 
@@ -124,9 +124,10 @@ describe('<TripleSelectBox />', () => {
     expect(Array.from(rightSelect.children).some((child) => child.value === '3')).toBeTruthy()
     expect(props.onChange).toBeCalledTimes(2)
     expect(props.onChange).toHaveBeenLastCalledWith({
-      center: ['5'],
-      left: ['a left box value'],
-      right: ['3']
+      center: [ { value: '5' } ],
+      left: [ { value: 'a left box value' } ],
+      right: [ { value: '3' } ]
     })
   })
+
 })
