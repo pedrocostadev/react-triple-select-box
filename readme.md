@@ -72,7 +72,7 @@ A simple, dependencies-free and dumb react component to render triple select box
 ```
 #### Examples
 ```js
-	<TripleSelectBox
+<TripleSelectBox
     	options={{
             left: [
                 'Courgette',
@@ -92,11 +92,11 @@ A simple, dependencies-free and dumb react component to render triple select box
         onChange={({ left, center, right }) => {
         	console.log({ left, center, right })
         }}
-    />
+/>
 ```
 
 ```js
-	<TripleSelectBox
+<TripleSelectBox
     	options={{
             left: [
                 { value: 'Courgette', selected: true, label: 'cgt' },
@@ -113,7 +113,7 @@ A simple, dependencies-free and dumb react component to render triple select box
         onChange={values => {
         	console.log({ values })
         }}
-    />
+/>
 ```
 
 #### Contributions
