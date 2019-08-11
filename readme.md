@@ -99,8 +99,8 @@ A simple, dependencies-free and dumb react component to render triple select box
 <TripleSelectBox
     	options={{
             left: [
-                { value: 'Courgette', selected: true, label: 'cgt' },
-                { value: 'Date' } 
+                { value: 'Courgette' },
+                { value: 'Date' }
             ],
             center: [
                 { value: 'Mango' }
