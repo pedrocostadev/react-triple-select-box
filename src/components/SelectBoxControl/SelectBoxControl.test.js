@@ -13,7 +13,7 @@ describe('<SelectBoxControl />', () => {
     }
 
     const { container, getAllByText } = render(<SelectBoxControl {...props} />)
-    const buttons = container.querySelectorAll('input')
+    const buttons = container.querySelectorAll('button')
     expect(buttons).toHaveLength(2)
     expect(getAllByText('<<')).toHaveLength(1)
     expect(getAllByText('>>')).toHaveLength(1)
@@ -28,7 +28,7 @@ describe('<SelectBoxControl />', () => {
     }
 
     const { container } = render(<SelectBoxControl {...props} />)
-    const [sendToLeftButton, sendToRightButton] = container.querySelectorAll('input')
+    const [sendToLeftButton, sendToRightButton] = container.querySelectorAll('button')
 
     expect(sendToLeftButton.disabled).toBeFalsy()
     expect(sendToRightButton.disabled).toBeTruthy()
@@ -41,7 +41,7 @@ describe('<SelectBoxControl />', () => {
     }
 
     const { container } = render(<SelectBoxControl {...props} />)
-    const [sendToLeftButton, sendToRightButton] = container.querySelectorAll('input')
+    const [sendToLeftButton, sendToRightButton] = container.querySelectorAll('button')
 
     fireEvent.click(sendToLeftButton)
     expect(props.sendToLeft).toBeCalledTimes(1)

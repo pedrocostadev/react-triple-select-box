@@ -6,25 +6,27 @@ import './SelectBoxControl.css'
 const TO_RIGHT_ARROWS = ">>"
 const TO_LEFT_ARROWS = "<<"
 
-const SelectBoxControl = ({ styles, sendToLeft, sendToLeftDisabled, sendToRight, sendToRightDisabled  }) => {
+const SelectBoxControl = ({ styles, sendToLeft, sendToLeftDisabled, sendToRight, sendToRightDisabled, ButtonsProps  }) => {
 	return (
 		<section style={styles?.container} className="select-box-control-container">
-			<input
+			<button
 				className="select-box-control-button"
-        		style={styles?.button}
+        style={styles?.button}
+				{...ButtonsProps}
 				onClick={sendToLeft}
-				type="button"
-				value={TO_LEFT_ARROWS}
 				disabled={sendToLeftDisabled}
-			/>
-			<input
-        		style={styles?.button}
+			>
+				{TO_LEFT_ARROWS}
+			</button>
+			<button
+        style={styles?.button}
 				className="select-box-control-button"
+        {...ButtonsProps}
 				onClick={sendToRight}
-				type="button"
-				value={TO_RIGHT_ARROWS}
 				disabled={sendToRightDisabled}
-			/>
+			>
+				{TO_RIGHT_ARROWS}
+			</button>
 		</section>
 	);
 }
@@ -34,7 +36,8 @@ SelectBoxControl.propTypes = {
   sendToLeft: PropTypes.func.isRequired,
   sendToLeftDisabled: PropTypes.bool,
   sendToRight: PropTypes.func.isRequired,
-  sendToRightDisabled: PropTypes.bool
+  sendToRightDisabled: PropTypes.bool,
+  ButtonsProps: PropTypes.object
 }
 
 export default SelectBoxControl

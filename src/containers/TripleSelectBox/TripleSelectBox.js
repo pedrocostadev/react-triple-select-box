@@ -32,6 +32,8 @@ const TripleSelectBox = props => {
 	return (
 		<section style={props.styles?.container} className="container">
             <SelectBox
+                SelectsProps={props.SelectsProps}
+                SelectOptionsProps={props.SelectOptionsProps}
                 title={props.titles?.left}
                 numberOfLines={props.numberOfLines?.left}
                 styles={props.styles?.box}
@@ -39,6 +41,7 @@ const TripleSelectBox = props => {
                 options={state.options.left}
             />
             <SelectBoxControl
+                ButtonsProps={props.ButtonsProps}
                 styles={props.styles?.boxController}
                 sendToLeft={centerToLeft}
                 sendToLeftDisabled={state.options.center.every(({ selected }) => !selected)}
@@ -46,6 +49,8 @@ const TripleSelectBox = props => {
                 sendToRightDisabled={state.options.left.every(({ selected }) => !selected)}
             />
             <SelectBox
+                SelectsProps={props.SelectsProps}
+                SelectOptionsProps={props.SelectOptionsProps}
                 title={props.titles?.center}
                 numberOfLines={props.numberOfLines?.center}
                 styles={props.styles?.box}
@@ -53,6 +58,7 @@ const TripleSelectBox = props => {
                 options={state.options.center}
             />
             <SelectBoxControl
+                ButtonsProps={props.ButtonsProps}
                 styles={props.styles?.boxController}
                 sendToLeft={rightToCenter}
                 sendToLeftDisabled={state.options.right.every(({ selected }) => !selected)}
@@ -60,6 +66,8 @@ const TripleSelectBox = props => {
                 sendToRightDisabled={state.options.center.every(({ selected }) => !selected)}
             />
             <SelectBox
+                SelectsProps={props.SelectsProps}
+                SelectOptionsProps={props.SelectOptionsProps}
                 title={props.titles?.right}
                 numberOfLines={props.numberOfLines?.right}
                 styles={props.styles?.box}
@@ -82,6 +90,7 @@ TripleSelectBox.propTypes = {
         center: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.number, PropTypes.string, Option ])),
         right: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.number, PropTypes.string, Option ]))
     }).isRequired,
+    onChange: PropTypes.func.isRequired,
     titles: PropTypes.shape({
         left: PropTypes.string,
         center: PropTypes.string,
@@ -105,7 +114,9 @@ TripleSelectBox.propTypes = {
             button: PropTypes.object
         })
     }),
-    onChange: PropTypes.func.isRequired
+    ButtonsProps: PropTypes.object,
+    SelectsProps: PropTypes.object,
+    SelectOptionsProps: PropTypes.object
 }
 
 export default TripleSelectBox
