@@ -13,7 +13,7 @@ A simple, dependencies-free and dumb react component to render triple select box
 
 ##### Valid option formats
 
-- ##### Object:
+- Object:
 ```js
     {
         /* MANDATORY */
@@ -25,7 +25,7 @@ A simple, dependencies-free and dumb react component to render triple select box
     }
 ```
 
-- ##### String or Number: 
+- String or Number: 
 ```js
     'A valid option'
     12
@@ -40,6 +40,8 @@ A simple, dependencies-free and dumb react component to render triple select box
             center, // Array of options to be rendered on center select box
             right // Array of options to be rendered on right select box
         },
+        /* MANDATORY */
+        onChange: ({ left, center, right }) => {} // Callback invoked on values changes
         /* OPTIONAL */
         titles: {
             left, //  Left Select Box Tile (string)
@@ -66,8 +68,12 @@ A simple, dependencies-free and dumb react component to render triple select box
                 button // Button controller style (Object)
             }
         },
-        /* MANDATORY */
-        onChange: ({ left, center, right }) => {} // Callback invoked on values changes
+        /* OPTIONAL */
+        ButtonsProps, // Props injected in the four button elements. You can overwrite style and className with that. (Object)
+        /* OPTIONAL */
+        SelectsProps, // Props injected in the three select elements. You can overwrite style and className with that. (Object)
+        /* OPTIONAL */
+        SelectOptionsProps // Props injected in the select options elements. You can overwrite style and className with that. (Object)
     }
 ```
 #### Examples
