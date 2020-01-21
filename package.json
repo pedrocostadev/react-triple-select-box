@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel ./src -w --out-dir ./dist -s inline --ignore '**/*.test.js' && ./scripts/--copy-files src dist",
     "prepublishOnly": "babel ./src --out-dir ./dist -s inline --ignore '**/*.test.js' && ./scripts/--copy-files src dist",
-    "storybook": "rm ./dist && npm run prepublishOnly && start-storybook",
+    "storybook": "rm -r ./dist && npm run prepublishOnly && start-storybook",
     "test": "jest --watchAll",
     "lint": "eslint src/**/*.js"
   },
