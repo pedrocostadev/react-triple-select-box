@@ -1,6 +1,6 @@
 {
   "name": "react-triple-select-box",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "A simple, dependencies-free and dumb react component to render triple select boxes.",
   "main": "dist/index.js",
   "scripts": {
@@ -52,7 +52,8 @@
     "jest": "^24.8.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "@olavoparno/jest-badges-readme": "^1.4.0"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
@@ -61,8 +62,5 @@
   },
   "files": [
     "dist/*"
-  ],
-  "dependencies": {
-    "@olavoparno/jest-badges-readme": "^1.4.0"
-  }
+  ]
 }
