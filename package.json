@@ -7,8 +7,10 @@
     "start": "babel ./src -w --out-dir ./dist -s inline --ignore '**/*.test.js' && ./scripts/--copy-files src dist",
     "prepublishOnly": "babel ./src --out-dir ./dist -s inline --ignore '**/*.test.js' && ./scripts/--copy-files src dist",
     "storybook": "rm -r ./dist && npm run prepublishOnly && start-storybook",
-    "test": "jest --watchAll",
-    "lint": "eslint src/**/*.js"
+    "test:watch": "jest --watchAll",
+    "test": "jest --collectCoverage",
+    "lint": "eslint src/**/*.js",
+    "make-badges": "node_modules/.bin/jest-badges-readme"
   },
   "repository": {
     "type": "git",
@@ -59,5 +61,8 @@
   },
   "files": [
     "dist/*"
-  ]
+  ],
+  "dependencies": {
+    "@olavoparno/jest-badges-readme": "^1.4.0"
+  }
 }
