@@ -1,6 +1,8 @@
 # react-triple-select-box
 A simple, dependencies-free and dumb react component to render triple select boxes. Since version 2.0.0 requires React v16.8 or greater.
 
+[![npm version](https://badge.fury.io/js/react-triple-select-box.svg)](https://badge.fury.io/js/react-triple-select-box)
+
 | Statements | Branches | Functions | Lines |
 | -----------|----------|-----------|-------|
 | ![Statements](https://img.shields.io/badge/Coverage-98.88%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-92.86%25-brightgreen.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-98.7%25-brightgreen.svg "Make me better!") |
