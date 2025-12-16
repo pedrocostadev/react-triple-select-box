@@ -144,3 +144,10 @@ The Vite config (`vite.config.js`) is set up for library mode:
 
 - `npm run build` runs automatically before `npm publish` (via `prepublishOnly`)
 - Only `dist/*` is included in npm package (see `files` in `package.json`)
+
+## GitHub Pages
+
+- **IMPORTANT**: The `.nojekyll` file in the repository root MUST be kept
+- This file disables Jekyll processing on GitHub Pages
+- Without it, Jekyll will try to parse `{{ }}` syntax in markdown files (like `README-template.md`) as Liquid template variables, causing build failures
+- The file is empty - its presence alone disables Jekyll
