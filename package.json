@@ -33,7 +33,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^4.3.0",
-    "@vitest/coverage-v8": "^2.1.0",
+    "@vitest/coverage-v8": "^4.0.15",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -46,7 +46,7 @@
     "react-dom": "^19.2.3",
     "storybook": "^10.1.9",
     "vite": "^6.0.0",
-    "vitest": "^2.1.0",
+    "vitest": "^4.0.15",
     "eslint-plugin-storybook": "10.1.9"
   },
   "peerDependencies": {
