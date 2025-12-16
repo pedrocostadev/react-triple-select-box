@@ -109,6 +109,13 @@ export interface ClassNames {
  */
 export interface TripleSelectBoxProps {
   /**
+   * Optional custom ID prefix for the component.
+   * Used to generate unique IDs for accessibility (label-select associations).
+   * If not provided, a unique ID will be auto-generated using React's useId hook.
+   */
+  id?: string;
+
+  /**
    * The options for the three select boxes.
    * Each option can be a string, number, or an object with value, label, and selected properties.
    */

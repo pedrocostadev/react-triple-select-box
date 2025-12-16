@@ -1,3 +1,4 @@
+import { memo } from "react";
 import PropTypes from "prop-types";
 
 import "./SelectBoxControl.css";
@@ -59,4 +60,4 @@ SelectBoxControl.propTypes = {
   ButtonsProps: PropTypes.object,
 };
 
-export default SelectBoxControl;
+export default memo(SelectBoxControl);

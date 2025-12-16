@@ -1,3 +1,4 @@
+import { memo } from "react";
 import PropTypes from "prop-types";
 
 import { parseSelection } from "./helpers";
@@ -78,4 +79,4 @@ SelectBox.defaultProps = {
   numberOfLines: DEFAULT_ROWS_NUMBER,
 };
 
-export default SelectBox;
+export default memo(SelectBox);

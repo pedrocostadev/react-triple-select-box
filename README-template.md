@@ -48,6 +48,8 @@ A simple, dependencies-free and dumb react component to render triple select box
 
 ```js
     {
+        /* OPTIONAL */
+        id, // Custom ID prefix for accessibility (string). Auto-generated if not provided.
         /* MANDATORY */
         options: {
             left, // Array of options to be rendered on left select box
@@ -122,6 +124,18 @@ A simple, dependencies-free and dumb react component to render triple select box
   }}
 />
 ```
+
+#### Accessibility
+
+This component is built with accessibility in mind:
+
+- **Labels are associated with selects** - Each `<label>` is properly connected to its `<select>` via `htmlFor`/`id` attributes
+- **Descriptive button labels** - Transfer buttons have `aria-label` attributes describing their action (e.g., "Move selected from Left to Center")
+- **Semantic structure** - Uses `role="group"` and `aria-label` on container sections for better screen reader context
+- **Keyboard navigation** - Fully navigable via keyboard using native HTML elements
+- **Button types** - All buttons have `type="button"` to prevent unintended form submissions
+
+Screen reader users will hear meaningful descriptions instead of just ">>" or "<<" when navigating the transfer buttons.
 
 #### Contributions
 

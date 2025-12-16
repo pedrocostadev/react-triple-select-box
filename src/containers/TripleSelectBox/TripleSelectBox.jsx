@@ -1,4 +1,4 @@
-import { useId, useReducer } from "react";
+import { useReducer, useCallback, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import "./TripleSelectBox.css";
@@ -8,34 +8,75 @@ import { ACTIONS, reducer, initializer } from "../../state";
 import { getOptions } from "../../selectors";
 import { useUpdate } from "./useUpdate";
 
+const DEFAULT_ID = "react-triple-select-box";
+
 const TripleSelectBox = (props) => {
-  const id = useId();
+  const id = props.id ?? DEFAULT_ID;
   const [state, dispatch] = useReducer(reducer, props, initializer);
 
-  const setLeftOptionsSelection = (valuesToSelect) =>
-    dispatch({ type: ACTIONS.SELECT_LEFT_VALUES, valuesToSelect });
-  const setCenterOptionsSelection = (valuesToSelect) =>
-    dispatch({ type: ACTIONS.SELECT_CENTER_VALUES, valuesToSelect });
-  const setRightOptionsSelection = (valuesToSelect) =>
-    dispatch({ type: ACTIONS.SELECT_RIGHT_VALUES, valuesToSelect });
+  const setLeftOptionsSelection = useCallback(
+    (valuesToSelect) =>
+      dispatch({ type: ACTIONS.SELECT_LEFT_VALUES, valuesToSelect }),
+    []
+  );
+  const setCenterOptionsSelection = useCallback(
+    (valuesToSelect) =>
+      dispatch({ type: ACTIONS.SELECT_CENTER_VALUES, valuesToSelect }),
+    []
+  );
+  const setRightOptionsSelection = useCallback(
+    (valuesToSelect) =>
+      dispatch({ type: ACTIONS.SELECT_RIGHT_VALUES, valuesToSelect }),
+    []
+  );
 
-  const onChange = (ACTION_ID) => () => {
-    dispatch({ type: ACTION_ID });
-  };
+  const leftToCenter = useCallback(
+    () => dispatch({ type: ACTIONS.LEFT_TO_CENTER }),
+    []
+  );
+  const centerToLeft = useCallback(
+    () => dispatch({ type: ACTIONS.CENTER_TO_LEFT }),
+    []
+  );
+  const rightToCenter = useCallback(
+    () => dispatch({ type: ACTIONS.RIGTH_TO_CENTER }),
+    []
+  );
+  const centerToRight = useCallback(
+    () => dispatch({ type: ACTIONS.CENTER_TO_RIGHT }),
+    []
+  );
 
-  const leftToCenter = onChange(ACTIONS.LEFT_TO_CENTER);
-  const centerToLeft = onChange(ACTIONS.CENTER_TO_LEFT);
-  const rightToCenter = onChange(ACTIONS.RIGTH_TO_CENTER);
-  const centerToRight = onChange(ACTIONS.CENTER_TO_RIGHT);
+  const currentOptions = useMemo(
+    () => getOptions(state.options),
+    [state.options]
+  );
 
   useUpdate({
-    deps: [getOptions(state.options)],
-    onUpdate: () => props.onChange(getOptions(state.options)),
+    deps: [currentOptions],
+    onUpdate: () => props.onChange(currentOptions),
   });
 
   const leftTitle = props.titles?.left || "Left";
   const centerTitle = props.titles?.center || "Center";
   const rightTitle = props.titles?.right || "Right";
+
+  const leftControlDisabled = useMemo(
+    () => state.options.center.every(({ selected }) => !selected),
+    [state.options.center]
+  );
+  const leftControlRightDisabled = useMemo(
+    () => state.options.left.every(({ selected }) => !selected),
+    [state.options.left]
+  );
+  const rightControlLeftDisabled = useMemo(
+    () => state.options.right.every(({ selected }) => !selected),
+    [state.options.right]
+  );
+  const rightControlRightDisabled = useMemo(
+    () => state.options.center.every(({ selected }) => !selected),
+    [state.options.center]
+  );
 
   return (
     <section
@@ -57,14 +98,10 @@ const TripleSelectBox = (props) => {
         ButtonsProps={props.ButtonsProps}
         classNames={props.classNames?.boxController}
         sendToLeft={centerToLeft}
-        sendToLeftDisabled={state.options.center.every(
-          ({ selected }) => !selected
-        )}
+        sendToLeftDisabled={leftControlDisabled}
         sendToLeftLabel={`Move selected from ${centerTitle} to ${leftTitle}`}
         sendToRight={leftToCenter}
-        sendToRightDisabled={state.options.left.every(
-          ({ selected }) => !selected
-        )}
+        sendToRightDisabled={leftControlRightDisabled}
         sendToRightLabel={`Move selected from ${leftTitle} to ${centerTitle}`}
       />
       <SelectBox
@@ -81,14 +118,10 @@ const TripleSelectBox = (props) => {
         ButtonsProps={props.ButtonsProps}
         classNames={props.classNames?.boxController}
         sendToLeft={rightToCenter}
-        sendToLeftDisabled={state.options.right.every(
-          ({ selected }) => !selected
-        )}
+        sendToLeftDisabled={rightControlLeftDisabled}
         sendToLeftLabel={`Move selected from ${rightTitle} to ${centerTitle}`}
         sendToRight={centerToRight}
-        sendToRightDisabled={state.options.center.every(
-          ({ selected }) => !selected
-        )}
+        sendToRightDisabled={rightControlRightDisabled}
         sendToRightLabel={`Move selected from ${centerTitle} to ${rightTitle}`}
       />
       <SelectBox
@@ -112,6 +145,7 @@ const Option = PropTypes.exact({
 });
 
 TripleSelectBox.propTypes = {
+  id: PropTypes.string,
   options: PropTypes.exact({
     left: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.number, PropTypes.string, Option])
