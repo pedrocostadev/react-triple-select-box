@@ -1,42 +1,61 @@
 .select-box-container {
-    margin: '8px';  
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
 }
 
 .select-box-label {
-	color: black;
-	display: block;
-	text-align: center;
-	font-size: 13px;
-	text-transform: uppercase;
-	font-weight: bold;
+  font-weight: 700;
+  color: #e94560;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  display: block;
+  text-align: center;
 }
 
 .select-box {
-	padding: 4px;
-	border-width: 4px;
-	border-style: solid;
-	border-radius: 5px;
-	border-color: #337ab7;
-	background-color: #d9edf7;
-	outline: none;
-	height: 170px;
-	width: 120px;
+  width: 100%;
+  min-width: 180px;
+  height: 220px;
+  padding: 4px;
+  border: 2px solid rgba(233, 69, 96, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 14px;
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.select-box:focus {
+  border-color: #e94560;
+  box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
 }
 
 .select-box-option {
-	padding: 4px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: 2px;
+  background: transparent;
+  color: #ffffff;
+  transition: all 0.2s ease;
 }
 
 .select-box-option:hover {
-	background-color: #6199ca;
-	border-radius: 3px;
-	font-weight: bold;
-	font-size: 120%;
-	color: black;
+  background: rgba(233, 69, 96, 0.2);
 }
 
-.select-box-option:focus, .select-box-option:active, .select-box-option:checked, .select-box-option:checked:active:focus, .select-box-option-selected {
-	background: linear-gradient(rgb(148, 173, 255),rgb(91, 110, 196));
-	font-weight: bold;
-	border-radius: 3px;
+.select-box-option:focus,
+.select-box-option:active,
+.select-box-option:checked,
+.select-box-option:checked:active:focus,
+.select-box-option-selected {
+  background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%) !important;
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
 }

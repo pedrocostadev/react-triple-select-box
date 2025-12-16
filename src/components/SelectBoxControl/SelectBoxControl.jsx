@@ -6,30 +6,38 @@ const TO_RIGHT_ARROWS = ">>";
 const TO_LEFT_ARROWS = "<<";
 
 const SelectBoxControl = ({
-  styles,
+  classNames,
   sendToLeft,
   sendToLeftDisabled,
   sendToRight,
   sendToRightDisabled,
+  sendToLeftLabel,
+  sendToRightLabel,
   ButtonsProps,
 }) => {
   return (
-    <section style={styles?.container} className="select-box-control-container">
+    <section
+      className={classNames?.container ?? "select-box-control-container"}
+      role="group"
+      aria-label="Transfer controls"
+    >
       <button
-        className="select-box-control-button"
-        style={styles?.button}
+        type="button"
+        className={classNames?.button ?? "select-box-control-button"}
         {...ButtonsProps}
         onClick={sendToLeft}
         disabled={sendToLeftDisabled}
+        aria-label={sendToLeftLabel || "Move selected items left"}
       >
         {TO_LEFT_ARROWS}
       </button>
       <button
-        style={styles?.button}
-        className="select-box-control-button"
+        type="button"
+        className={classNames?.button ?? "select-box-control-button"}
         {...ButtonsProps}
         onClick={sendToRight}
         disabled={sendToRightDisabled}
+        aria-label={sendToRightLabel || "Move selected items right"}
       >
         {TO_RIGHT_ARROWS}
       </button>
@@ -38,14 +46,16 @@ const SelectBoxControl = ({
 };
 
 SelectBoxControl.propTypes = {
-  styles: PropTypes.exact({
-    container: PropTypes.object,
-    button: PropTypes.object,
+  classNames: PropTypes.exact({
+    container: PropTypes.string,
+    button: PropTypes.string,
   }),
   sendToLeft: PropTypes.func.isRequired,
   sendToLeftDisabled: PropTypes.bool,
   sendToRight: PropTypes.func.isRequired,
   sendToRightDisabled: PropTypes.bool,
+  sendToLeftLabel: PropTypes.string,
+  sendToRightLabel: PropTypes.string,
   ButtonsProps: PropTypes.object,
 };
 

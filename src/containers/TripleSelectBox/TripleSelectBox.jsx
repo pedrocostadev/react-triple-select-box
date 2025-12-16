@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useId, useReducer } from "react";
 import PropTypes from "prop-types";
 
 import "./TripleSelectBox.css";
@@ -9,6 +9,7 @@ import { getOptions } from "../../selectors";
 import { useUpdate } from "./useUpdate";
 
 const TripleSelectBox = (props) => {
+  const id = useId();
   const [state, dispatch] = useReducer(reducer, props, initializer);
 
   const setLeftOptionsSelection = (valuesToSelect) =>
@@ -32,56 +33,71 @@ const TripleSelectBox = (props) => {
     onUpdate: () => props.onChange(getOptions(state.options)),
   });
 
+  const leftTitle = props.titles?.left || "Left";
+  const centerTitle = props.titles?.center || "Center";
+  const rightTitle = props.titles?.right || "Right";
+
   return (
-    <section style={props.styles?.container} className="container">
+    <section
+      className={props.classNames?.container ?? "container"}
+      role="group"
+      aria-label="Triple select box"
+    >
       <SelectBox
+        id={`${id}-left`}
         SelectsProps={props.SelectsProps}
         SelectOptionsProps={props.SelectOptionsProps}
         title={props.titles?.left}
         numberOfLines={props.numberOfLines?.left}
-        styles={props.styles?.box}
+        classNames={props.classNames?.box}
         onSelect={setLeftOptionsSelection}
         options={state.options.left}
       />
       <SelectBoxControl
         ButtonsProps={props.ButtonsProps}
-        styles={props.styles?.boxController}
+        classNames={props.classNames?.boxController}
         sendToLeft={centerToLeft}
         sendToLeftDisabled={state.options.center.every(
           ({ selected }) => !selected
         )}
+        sendToLeftLabel={`Move selected from ${centerTitle} to ${leftTitle}`}
         sendToRight={leftToCenter}
         sendToRightDisabled={state.options.left.every(
           ({ selected }) => !selected
         )}
+        sendToRightLabel={`Move selected from ${leftTitle} to ${centerTitle}`}
       />
       <SelectBox
+        id={`${id}-center`}
         SelectsProps={props.SelectsProps}
         SelectOptionsProps={props.SelectOptionsProps}
         title={props.titles?.center}
         numberOfLines={props.numberOfLines?.center}
-        styles={props.styles?.box}
+        classNames={props.classNames?.box}
         onSelect={setCenterOptionsSelection}
         options={state.options.center}
       />
       <SelectBoxControl
         ButtonsProps={props.ButtonsProps}
-        styles={props.styles?.boxController}
+        classNames={props.classNames?.boxController}
         sendToLeft={rightToCenter}
         sendToLeftDisabled={state.options.right.every(
           ({ selected }) => !selected
         )}
+        sendToLeftLabel={`Move selected from ${rightTitle} to ${centerTitle}`}
         sendToRight={centerToRight}
         sendToRightDisabled={state.options.center.every(
           ({ selected }) => !selected
         )}
+        sendToRightLabel={`Move selected from ${centerTitle} to ${rightTitle}`}
       />
       <SelectBox
+        id={`${id}-right`}
         SelectsProps={props.SelectsProps}
         SelectOptionsProps={props.SelectOptionsProps}
         title={props.titles?.right}
         numberOfLines={props.numberOfLines?.right}
-        styles={props.styles?.box}
+        classNames={props.classNames?.box}
         onSelect={setRightOptionsSelection}
         options={state.options.right}
       />
@@ -118,17 +134,18 @@ TripleSelectBox.propTypes = {
     center: PropTypes.number,
     right: PropTypes.number,
   }),
-  styles: PropTypes.exact({
-    container: PropTypes.object,
+  classNames: PropTypes.exact({
+    container: PropTypes.string,
     box: PropTypes.exact({
-      label: PropTypes.object,
-      container: PropTypes.object,
-      select: PropTypes.object,
-      selectOption: PropTypes.object,
+      container: PropTypes.string,
+      label: PropTypes.string,
+      select: PropTypes.string,
+      selectOption: PropTypes.string,
+      selectOptionSelected: PropTypes.string,
     }),
     boxController: PropTypes.exact({
-      container: PropTypes.object,
-      button: PropTypes.object,
+      container: PropTypes.string,
+      button: PropTypes.string,
     }),
   }),
   ButtonsProps: PropTypes.object,

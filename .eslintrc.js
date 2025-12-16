@@ -9,8 +9,9 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
   ],
+  ignorePatterns: ["**/*.d.ts"],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",

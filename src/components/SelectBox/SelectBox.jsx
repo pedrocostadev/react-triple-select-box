@@ -6,21 +6,23 @@ import "./SelectBox.css";
 const DEFAULT_ROWS_NUMBER = 10;
 
 const SelectBox = ({
+  id,
   title,
   options,
   numberOfLines,
   onSelect,
-  styles,
+  classNames,
   SelectsProps,
   SelectOptionsProps,
 }) => (
-  <section style={styles?.container} className="select-box-container">
-    <label className="select-box-label" style={styles?.label}>
+  <section className={classNames?.container ?? "select-box-container"}>
+    <label htmlFor={id} className={classNames?.label ?? "select-box-label"}>
       {title}
     </label>
     <select
-      className="select-box"
-      style={styles?.select}
+      id={id}
+      aria-label={title || "Select options"}
+      className={classNames?.select ?? "select-box"}
       {...SelectsProps}
       onChange={(ev) => onSelect(parseSelection(ev))}
       size={numberOfLines}
@@ -28,10 +30,14 @@ const SelectBox = ({
     >
       {options.map(({ value, selected, label }) => (
         <option
-          className={`select-box-option${
-            selected ? " select-box-option-selected" : ""
+          className={`${classNames?.selectOption ?? "select-box-option"}${
+            selected
+              ? ` ${
+                  classNames?.selectOptionSelected ??
+                  "select-box-option-selected"
+                }`
+              : ""
           }`}
-          style={styles?.selectOption}
           {...SelectOptionsProps}
           key={value}
           value={value}
@@ -44,6 +50,7 @@ const SelectBox = ({
 );
 
 SelectBox.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.exact({
@@ -55,7 +62,13 @@ SelectBox.propTypes = {
   ),
   numberOfLines: PropTypes.number,
   onSelect: PropTypes.func.isRequired,
-  styles: PropTypes.object,
+  classNames: PropTypes.exact({
+    container: PropTypes.string,
+    label: PropTypes.string,
+    select: PropTypes.string,
+    selectOption: PropTypes.string,
+    selectOptionSelected: PropTypes.string,
+  }),
   SelectsProps: PropTypes.object,
   SelectOptionsProps: PropTypes.object,
 };

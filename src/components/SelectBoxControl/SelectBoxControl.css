@@ -1,24 +1,41 @@
 .select-box-control-container {
-	display: flex;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 8px;
 }
 
 .select-box-control-button {
-    font-size: 13px;
-	padding: 4px;
-	border-width: 2px;
-	border-style: solid;
-	border-radius: 5px;
-	border-color: black;
-	color: black;
-	width: 80%;
-	margin: 4px;
-	display: block;
-	color: #fff;
-	background-color: #337ab7;
-	border-color: #2e6da4;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+}
+
+.select-box-control-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
+}
+
+.select-box-control-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.select-box-control-button:disabled {
+  background: linear-gradient(135deg, #3a3a5c 0%, #4a4a6c 100%);
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .select-box-control-button:focus {
-	outline:0;
+  outline: 0;
 }

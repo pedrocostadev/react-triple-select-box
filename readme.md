@@ -1,10 +1,12 @@
 # react-triple-select-box
+
 A simple, dependencies-free and dumb react component to render triple select boxes. Since version 2.0.0 requires React v16.8 or greater.
 
 [![npm version](https://badge.fury.io/js/react-triple-select-box.svg)](https://badge.fury.io/js/react-triple-select-box)
+[![TypeScript](https://img.shields.io/badge/TypeScript-supported-blue.svg)](https://www.typescriptlang.org/)
 
-| Statements | Branches | Functions | Lines |
-| -----------|----------|-----------|-------|
+| Statements                                                                                      | Branches                                                                                      | Functions                                                                                    | Lines                                                                                     |
+| ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ![Statements](https://img.shields.io/badge/Coverage-98.88%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-92.86%25-brightgreen.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-98.7%25-brightgreen.svg "Make me better!") |
 
 ![Screenshot](./img/demo.gif)
@@ -12,14 +14,39 @@ A simple, dependencies-free and dumb react component to render triple select box
 ## How To use
 
 #### CommonJS Import
-	const TripleSelectBox = require('react-triple-select-box')
+
+```js
+const TripleSelectBox = require("react-triple-select-box");
+require("react-triple-select-box/dist/styles.css");
+```
+
 #### ES6 Import
-	import TripleSelectBox from 'react-triple-select-box'
+
+```js
+import TripleSelectBox from "react-triple-select-box";
+import "react-triple-select-box/dist/styles.css";
+```
+
+#### TypeScript
+
+This package includes TypeScript type definitions out of the box. You get full autocomplete and type checking when using this component in TypeScript projects.
+
+```tsx
+import TripleSelectBox, {
+  TripleSelectBoxProps,
+  Option,
+} from "react-triple-select-box";
+import "react-triple-select-box/dist/styles.css";
+```
+
+> **Note:** The styles import is required to apply the default styling. If you prefer to use your own styles, you can skip the CSS import and use the `classNames` prop to apply custom classes.
+
 #### Props
 
 ##### Valid option formats
 
 - Object:
+
 ```js
     {
         /* MANDATORY */
@@ -31,13 +58,15 @@ A simple, dependencies-free and dumb react component to render triple select box
     }
 ```
 
-- String or Number: 
+- String or Number:
+
 ```js
-    'A valid option'
-    12
+"A valid option";
+12;
 ```
 
 ##### All props
+
 ```js
     {
         /* MANDATORY */
@@ -61,17 +90,18 @@ A simple, dependencies-free and dumb react component to render triple select box
             right // Right Select Box size (number)
         },
         /* OPTIONAL */
-        styles: {
-            container, // Root container style (Object)
+        classNames: {
+            container, // Root container CSS class (string)
             box: {
-                label, // Select box labels style, (Object)
-                container, // Select box containers style (Object)
-                select, // Select Boxes styles (Object)
-                selectOption // Select Options style (Object)
+                container, // Select box containers CSS class (string)
+                label, // Select box labels CSS class (string)
+                select, // Select Boxes CSS class (string)
+                selectOption, // Select Options CSS class (string)
+                selectOptionSelected // Selected Options CSS class (string)
             },
             boxController: {
-                container, // Select box controller container style (Object)
-                button // Button controller style (Object)
+                container, // Select box controller container CSS class (string)
+                button // Button controller CSS class (string)
             }
         },
         /* OPTIONAL */
@@ -82,51 +112,38 @@ A simple, dependencies-free and dumb react component to render triple select box
         SelectOptionsProps // Props injected in the select options elements. You can overwrite style and className with that. (Object)
     }
 ```
+
 #### Examples
+
 ```js
 <TripleSelectBox
-    	options={{
-            left: [
-                'Courgette',
-                'Date',
-                'Grape'
-            ],
-            center: [
-                'Mango',
-                'Lemon',
-                'Leek'
-            ] ,
-            right: [
-                'Apple',
-                'Orange'
-            ]
-        }}
-        onChange={({ left, center, right }) => {
-        	console.log({ left, center, right })
-        }}
+  options={{
+    left: ["Courgette", "Date", "Grape"],
+    center: ["Mango", "Lemon", "Leek"],
+    right: ["Apple", "Orange"],
+  }}
+  onChange={({ left, center, right }) => {
+    console.log({ left, center, right });
+  }}
 />
 ```
 
 ```js
 <TripleSelectBox
-    	options={{
-            left: [
-                { value: 'Courgette', selected: true, label: 'cgt' },
-                { value: 'Date' }
-            ],
-            center: [
-                { value: 'Mango' }
-            ],
-            right: [
-                { value: 'Apple' },
-                { value: 'Orange' }
-            ]
-        }}
-        onChange={values => {
-        	console.log({ values })
-        }}
+  options={{
+    left: [
+      { value: "Courgette", selected: true, label: "cgt" },
+      { value: "Date" },
+    ],
+    center: [{ value: "Mango" }],
+    right: [{ value: "Apple" }, { value: "Orange" }],
+  }}
+  onChange={(values) => {
+    console.log({ values });
+  }}
 />
 ```
 
 #### Contributions
+
 Contributions are welcome, just open a PR and contact me :-).
