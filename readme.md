@@ -22,20 +22,8 @@ require("react-triple-select-box/dist/styles.css");
 
 #### ES6 Import
 
-```js
-import TripleSelectBox from "react-triple-select-box";
-import "react-triple-select-box/dist/styles.css";
-```
-
-#### TypeScript
-
-This package includes TypeScript type definitions out of the box. You get full autocomplete and type checking when using this component in TypeScript projects.
-
 ```tsx
-import TripleSelectBox, {
-  TripleSelectBoxProps,
-  Option,
-} from "react-triple-select-box";
+import TripleSelectBox from "react-triple-select-box";
 import "react-triple-select-box/dist/styles.css";
 ```
 
@@ -144,6 +132,49 @@ import "react-triple-select-box/dist/styles.css";
     console.log({ values });
   }}
 />
+```
+
+#### TypeScript Example
+
+```tsx
+import { useState, useCallback } from "react";
+import TripleSelectBox, {
+  TripleOptions,
+  OptionOutput,
+} from "react-triple-select-box";
+import "react-triple-select-box/dist/styles.css";
+
+const initialOptions = [
+  { value: "1", label: "Apple" },
+  { value: "2", label: "Banana" },
+  { value: "3", label: "Cherry" },
+  { value: "4", label: "Date" },
+  { value: "5", label: "Elderberry" },
+  { value: "6", label: "Fig" },
+];
+
+function App() {
+  const [options, setOptions] = useState<TripleOptions<OptionOutput>>({
+    left: initialOptions.slice(0, 2),
+    center: initialOptions.slice(2, 4),
+    right: initialOptions.slice(4),
+  });
+
+  const handleChange = useCallback(
+    (newOptions: TripleOptions<OptionOutput>) => {
+      setOptions(newOptions);
+    },
+    []
+  );
+
+  return (
+    <TripleSelectBox
+      options={options}
+      onChange={handleChange}
+      titles={{ left: "Available", center: "Selected", right: "Excluded" }}
+    />
+  );
+}
 ```
 
 #### Accessibility

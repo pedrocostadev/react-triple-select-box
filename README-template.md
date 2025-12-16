@@ -14,11 +14,19 @@ A simple, dependencies-free and dumb react component to render triple select box
 
 #### CommonJS Import
 
-    const TripleSelectBox = require('react-triple-select-box')
+```tsx
+const TripleSelectBox = require("react-triple-select-box");
+require("react-triple-select-box/dist/styles.css");
+```
 
 #### ES6 Import
 
-    import TripleSelectBox from 'react-triple-select-box'
+```tsx
+import TripleSelectBox from "react-triple-select-box";
+import "react-triple-select-box/dist/styles.css";
+```
+
+> **Note:** The styles import is required to apply the default styling. If you prefer to use your own styles, you can skip the CSS import and use the `classNames` prop to apply custom classes.
 
 #### Props
 
@@ -123,6 +131,49 @@ A simple, dependencies-free and dumb react component to render triple select box
     console.log({ values });
   }}
 />
+```
+
+#### TypeScript Example
+
+```tsx
+import { useState, useCallback } from "react";
+import TripleSelectBox, {
+  TripleOptions,
+  OptionOutput,
+} from "react-triple-select-box";
+import "react-triple-select-box/dist/styles.css";
+
+const initialOptions = [
+  { value: "1", label: "Apple" },
+  { value: "2", label: "Banana" },
+  { value: "3", label: "Cherry" },
+  { value: "4", label: "Date" },
+  { value: "5", label: "Elderberry" },
+  { value: "6", label: "Fig" },
+];
+
+function App() {
+  const [options, setOptions] = useState<TripleOptions<OptionOutput>>({
+    left: initialOptions.slice(0, 2),
+    center: initialOptions.slice(2, 4),
+    right: initialOptions.slice(4),
+  });
+
+  const handleChange = useCallback(
+    (newOptions: TripleOptions<OptionOutput>) => {
+      setOptions(newOptions);
+    },
+    []
+  );
+
+  return (
+    <TripleSelectBox
+      options={options}
+      onChange={handleChange}
+      titles={{ left: "Available", center: "Selected", right: "Excluded" }}
+    />
+  );
+}
 ```
 
 #### Accessibility

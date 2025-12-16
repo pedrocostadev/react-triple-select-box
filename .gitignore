@@ -12,3 +12,4 @@ dist
 .DS_Store
 .env
 npm-debug.log
+test-package
