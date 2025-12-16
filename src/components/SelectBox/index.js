@@ -1,3 +1,3 @@
-import SelectBox from './SelectBox'
+import SelectBox from "./SelectBox.jsx";
 
-export { SelectBox as default }
+export { SelectBox as default };

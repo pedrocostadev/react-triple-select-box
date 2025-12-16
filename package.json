@@ -1,16 +1,17 @@
 {
   "name": "react-triple-select-box",
-  "version": "2.1.11",
+  "version": "2.2..0",
   "description": "A simple, dependencies-free and dumb react component to render triple select boxes.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "babel ./src -w --out-dir ./dist -s inline --ignore '**/*.test.js' && ./scripts/--copy-files src dist",
-    "prepublishOnly": "babel ./src --out-dir ./dist -s inline --ignore '**/*.test.js' && ./scripts/--copy-files src dist",
-    "storybook": "rm -r ./dist && npm run prepublishOnly && start-storybook",
-    "test:watch": "jest --watchAll",
-    "test": "jest --collectCoverage",
-    "lint": "eslint src/**/*.js",
-    "make-badges": "node_modules/.bin/jest-badges-readme"
+    "start": "vite build --watch",
+    "build": "vite build",
+    "prepublishOnly": "vite build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test:watch": "vitest",
+    "test": "vitest run --coverage",
+    "lint": "eslint src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -28,40 +29,32 @@
   },
   "homepage": "https://github.com/pedrocostadev/react-triple-select-box#readme",
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@olavoparno/jest-badges-readme": "^1.4.0",
-    "@storybook/react": "^6.0.28",
-    "@testing-library/react": "11.2.3",
-    "babel-eslint": "^10.0.2",
-    "babel-jest": "^24.8.0",
-    "babel-loader": "^8.0.6",
-    "eslint": "^6.1.0",
-    "eslint-config-standard": "^13.0.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.15.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-standard": "^4.0.0",
-    "fs-extra": "^8.1.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "26.6.3",
-    "prop-types": "^15.7.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "@storybook/react-vite": "^10.1.9",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.34.1",
+    "jsdom": "^25.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "storybook": "^10.1.9",
+    "vite": "^6.0.0",
+    "vitest": "^2.1.0",
+    "eslint-plugin-storybook": "10.1.9"
   },
   "peerDependencies": {
-    "prop-types": "^15.7.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "prop-types": ">=15.7.2",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "files": [
     "dist/*"
-  ],
-  "dependencies": {}
+  ]
 }

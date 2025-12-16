@@ -1,31 +1,32 @@
 module.exports = {
-  parser: 'babel-eslint',
   env: {
     browser: true,
-    es6: true,
-    jest: true
+    es2021: true,
+    jest: true,
+    node: true,
   },
   extends: [
-    'standard'
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:storybook/recommended"
   ],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
-    ecmaVersion: 2018,
-    sourceType: 'module'
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-  plugins: [
-    'react'
-  ],
-  rules: {
+  plugins: ["react"],
+  rules: {},
+  settings: {
+    react: {
+      version: "detect",
+    },
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended'
-  ]
-}
+};
