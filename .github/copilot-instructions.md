@@ -118,13 +118,6 @@ describe("<ComponentName />", () => {
 - Class names use `kebab-case` (e.g., `select-box-container`)
 - Import CSS directly in component files: `import "./ComponentName.css";`
 
-## Known Issues
-
-- **Typo in Action**: `RIGTH_TO_CENTER` is misspelled in `actions.js` (should be `RIGHT_TO_CENTER`) - maintain for backwards compatibility
-- **CSS Bug**: In `SelectBox.css`, `margin: '8px'` has quotes that may cause issues
-- **Lint Config**: The lint script only targets `.js` files (`eslint src/**/*.js`), not `.jsx` files
-- **Pre-existing Lint Errors**: `selectors.js` has unused variable warnings for destructured `selected` in arrow functions
-
 ## Build Configuration
 
 The Vite config (`vite.config.js`) is set up for library mode:

@@ -39,7 +39,7 @@ const TripleSelectBox = (props) => {
     []
   );
   const rightToCenter = useCallback(
-    () => dispatch({ type: ACTIONS.RIGTH_TO_CENTER }),
+    () => dispatch({ type: ACTIONS.RIGHT_TO_CENTER }),
     []
   );
   const centerToRight = useCallback(
