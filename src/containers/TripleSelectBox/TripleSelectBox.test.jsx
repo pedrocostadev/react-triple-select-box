@@ -179,4 +179,267 @@ describe("<TripleSelectBox />", () => {
       right: [{ value: "3" }],
     });
   });
+
+  it("should apply custom id to select boxes", () => {
+    const props = {
+      id: "custom-triple-box",
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const selects = container.querySelectorAll("select");
+
+    expect(selects[0].id).toBe("custom-triple-box-left");
+    expect(selects[1].id).toBe("custom-triple-box-center");
+    expect(selects[2].id).toBe("custom-triple-box-right");
+  });
+
+  it("should use default id when not provided", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const selects = container.querySelectorAll("select");
+
+    expect(selects[0].id).toBe("react-triple-select-box-left");
+    expect(selects[1].id).toBe("react-triple-select-box-center");
+    expect(selects[2].id).toBe("react-triple-select-box-right");
+  });
+
+  it("should render options with label property", () => {
+    const props = {
+      options: {
+        left: [{ value: "1", label: "One" }],
+        center: [{ value: "2", label: "Two" }],
+        right: [{ value: "3", label: "Three" }],
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const selects = container.querySelectorAll("select");
+
+    expect(selects[0].children[0].textContent).toBe("One");
+    expect(selects[1].children[0].textContent).toBe("Two");
+    expect(selects[2].children[0].textContent).toBe("Three");
+  });
+
+  it("should apply numberOfLines to each box", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      numberOfLines: {
+        left: 5,
+        center: 10,
+        right: 15,
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const selects = container.querySelectorAll("select");
+
+    expect(selects[0].size).toBe(5);
+    expect(selects[1].size).toBe(10);
+    expect(selects[2].size).toBe(15);
+  });
+
+  it("should apply custom classNames to container", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      classNames: {
+        container: "custom-main-container",
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const section = container.querySelector("section");
+
+    expect(section.className).toBe("custom-main-container");
+  });
+
+  it("should disable left control buttons when no items are selected", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      onChange: () => {},
+    };
+
+    const { getAllByText } = render(<TripleSelectBox {...props} />);
+    const [leftToCenterButton] = getAllByText(">>");
+    const [centerToLeftButton] = getAllByText("<<");
+
+    expect(leftToCenterButton.disabled).toBe(true);
+    expect(centerToLeftButton.disabled).toBe(true);
+  });
+
+  it("should enable buttons after selecting items", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      onChange: () => {},
+    };
+
+    const { container, getAllByText } = render(<TripleSelectBox {...props} />);
+    const [leftToCenterButton] = getAllByText(">>");
+    const [leftSelect] = container.querySelectorAll("select");
+
+    expect(leftToCenterButton.disabled).toBe(true);
+
+    fireEvent.change(leftSelect, { target: { value: "1" } });
+
+    expect(leftToCenterButton.disabled).toBe(false);
+  });
+
+  it("should have role=group on main container", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const section = container.querySelector("section");
+
+    expect(section.getAttribute("role")).toBe("group");
+  });
+
+  it("should have aria-label on main container", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const section = container.querySelector("section");
+
+    expect(section.getAttribute("aria-label")).toBe("Triple select box");
+  });
+
+  it("should pass SelectsProps to SelectBox components", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      SelectsProps: {
+        "data-testid": "custom-select",
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const selects = container.querySelectorAll("select");
+
+    selects.forEach((select) => {
+      expect(select.getAttribute("data-testid")).toBe("custom-select");
+    });
+  });
+
+  it("should pass ButtonsProps to SelectBoxControl components", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      ButtonsProps: {
+        "data-testid": "custom-button",
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const buttons = container.querySelectorAll("button");
+
+    buttons.forEach((button) => {
+      expect(button.getAttribute("data-testid")).toBe("custom-button");
+    });
+  });
+
+  it("should have proper aria-labels on control buttons with custom titles", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      titles: {
+        left: "Available",
+        center: "Selected",
+        right: "Rejected",
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const buttons = container.querySelectorAll("button");
+
+    expect(buttons[0].getAttribute("aria-label")).toBe(
+      "Move selected from Selected to Available"
+    );
+    expect(buttons[1].getAttribute("aria-label")).toBe(
+      "Move selected from Available to Selected"
+    );
+    expect(buttons[2].getAttribute("aria-label")).toBe(
+      "Move selected from Rejected to Selected"
+    );
+    expect(buttons[3].getAttribute("aria-label")).toBe(
+      "Move selected from Selected to Rejected"
+    );
+  });
+
+  it("should use default titles in aria-labels when titles not provided", () => {
+    const props = {
+      options: {
+        left: ["1"],
+        center: ["2"],
+        right: ["3"],
+      },
+      onChange: () => {},
+    };
+
+    const { container } = render(<TripleSelectBox {...props} />);
+    const buttons = container.querySelectorAll("button");
+
+    expect(buttons[0].getAttribute("aria-label")).toBe(
+      "Move selected from Center to Left"
+    );
+    expect(buttons[1].getAttribute("aria-label")).toBe(
+      "Move selected from Left to Center"
+    );
+  });
 });
